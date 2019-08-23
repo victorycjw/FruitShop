@@ -1,0 +1,152 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.2.5",
+	"appid": "wx714dbffba0b3a0c6",
+	"projectname": "%E5%AD%A6%E9%95%BF%E7%9A%84%E5%B0%8F%E5%B1%8B",
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 17,
+			"list": [
+				{
+					"id": -1,
+					"name": "个人中",
+					"pathName": "pages/people/people",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "福利",
+					"pathName": "pages/welfare/welfare",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "购物车",
+					"pathName": "pages/shopping/shopping",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的评价",
+					"pathName": "pages/peopleData/myEvaluation/myEvaluation",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "二维码",
+					"pathName": "pages/peopleData/qrCode/qrCode",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的团队",
+					"pathName": "pages/peopleData/myTeam/myTeam",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "订单确定",
+					"pathName": "pages/shoppingSure/shoppingSure",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "商品分类",
+					"pathName": "pages/product/productSort/productSort",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "商品详情",
+					"pathName": "pages/product/productData/productData",
+					"query": ""
+				},
+				{
+					"id": 9,
+					"name": "抢积分",
+					"pathName": "package/pages/sweep/sweep",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "抢积分详情",
+					"pathName": "package/pages/sweepDetail/sweepDetail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "优惠卷",
+					"pathName": "pages/peopleData/coupon/coupon",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "评价",
+					"pathName": "pages/peopleData/evaluate/evaluate",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "购物车",
+					"pathName": "pages/shopping/shopping",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "收货地址",
+					"pathName": "pages/peopleData/address/address",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "扫雷",
+					"pathName": "package/pages/sweep/sweep",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "美颜",
+					"pathName": "pages/product/videoList/videoList",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "二维码",
+					"pathName": "pages/peopleData/qrCode/qrCode",
+					"query": ""
+				}
+			]
+		}
+	}
+}

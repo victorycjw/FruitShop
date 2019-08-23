@@ -1,0 +1,41 @@
+/* pages/money/withdraw/withdraw.wxss */
+@import "/utils/style/flexstyle.wxss";
+
+page{
+  background: #f5f5f5;
+}
+.item30{
+  padding: 30rpx;
+}
+.item20{
+  padding: 20rpx 30rpx
+}
+
+.moneys{
+  padding: 30rpx 20rpx
+}
+.reItems{
+  flex-wrap: wrap;
+  /* margin: 30rpx 0 */
+  margin: 10rpx 0
+}
+.reItem{
+  width: 160rpx;
+  margin: 9rpx;
+  border: 1rpx solid #f23030;
+  border-radius: 10rpx;
+  padding: 20rpx 0;
+}
+
+.itembot{
+  margin: 66rpx auto 30rpx;
+  padding-bottom: 66rpx
+}
+.button{
+  background: #f23030;
+  color: #fff;
+  height: 88rpx;
+  border-radius: 44rpx;
+  line-height: 1;
+  padding: 30rpx
+}

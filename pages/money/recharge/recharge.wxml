@@ -1,0 +1,38 @@
+<!--pages/money/recharge/recharge.wxml-->
+<view class='top_border'></view>
+
+<view>
+  <view class='item30 fb bw mb20 s28'>
+    <view class='textw'>支付方式</view>
+    <view class='c9'>微信支付</view>
+  </view>
+ 
+  <view class='bw moneys'>
+
+    <view class='reItems fs'>
+      <block wx:for="{{giftList}}" wx:key="id">
+        <view class='reItem vc {{checkIndex==index?"check":"nocheck"}}' bindtap='checkMoney' data-index='{{index}}' data-money='{{item.payMoney}}'>
+          <view class='s28 textw'>充{{item.payMoney}}元</view>
+          <view class='s22'>送{{item.giftMoney}}元</view>
+        </view>
+      </block>
+
+    </view>
+  </view>
+
+
+  <form bindsubmit='addbalance'>
+    <view class='item30 bw'>
+
+      <view class='s28 textw mb30'>充值金额</view>
+
+      <view class='fs mt30 bd pb20'>
+        <view class='mr30'>￥</view>
+        <input type='digit' placeholder='请输入充值金额' value='{{money}}' name="money"></input>
+      </view>
+
+      <button class='button s32' form-type='submit'>立即支付</button>
+    </view>
+  </form>
+      
+</view>

@@ -1,0 +1,28 @@
+<!--pages/product/videoList/videoList.wxml-->
+<view></view>
+
+<view>
+  <block wx:for="{{videoList}}" wx:key="id">
+    <view class='bw mb20'>
+      <!-- 遮挡图 -->
+      <view wx:if="{{videoIndex!=index}}">
+         <image class='coverimg' src='{{imgURL+item.cover}}'></image> 
+         <view class='playView ac' bindtap='findUserVideoIsExchange' data-item='{{item}}' data-index='{{index}}'>
+          <image class='' mode='widthFix' style='width:112rpx;;' src='/images/pro/playIcon.png'></image>
+         </view>  
+      </view>
+
+      <!-- 视频  -->
+      <video wx:if="{{videoIndex==index}}" src='{{imgURL+item.videoUrl}}' poster="{{imgURL+item.cover}}" autoplay='true'></video>
+
+      <view class='item20'>
+        <view class='s28 mb20'>{{item.title}}</view>
+        <view class='fb s24'>
+          <view class='c_r'>{{item.needIntegral}}积分兑换</view>
+          <view>{{item.tapNum}}人已看</view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
+

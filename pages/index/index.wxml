@@ -1,0 +1,108 @@
+<!-- 遮罩 -->
+<import src="/utils/xmls/maskLayer/maskLayer.wxml" />
+<!-- 无数据样式 -->
+<import src="/utils/xmls/noneDataStyle/noneDataStyle.wxml" />
+
+
+<!-- 顶部分界线 -->
+<view class='top_border'></view>
+
+<template is="maskLayer" data="{{showModalStatus}}" />
+<!-- <template is="noneDataStyle" data="{{data:personList}}" /> -->
+<!-- <template is="endStyleSmall" data="{{data:isend}}" /> -->
+
+<view class='index'>
+  <!-- 轮播图 --> 
+  <swiper autoplay='true' indicator-dots='true'>
+    <block wx:for="{{sildeList}}" wx:key="id">
+      <swiper-item>
+        <image mode='aspectFill' src='{{imgURL+item.picture}}' style='width:100%;height:100%;'></image>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <!-- 消息通知 -->
+   <view class='bw noticView'>
+    <swiper autoplay='true' circular='true'>
+      <block wx:for="{{messageList}}" wx:key='id'>
+        <swiper-item class="fs">
+          <view class='noticCon'>{{item.content}}</view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view> 
+
+  <view class='h96 bw item30 fs'>
+    <image class='mr30' src='/images/index/notice.png' style='width:49rpx;height:38rpx'></image>
+    <swiper autoplay='true' interval='2000' duration='1000' vertical='true' circular='true' style='width:600rpx;height:100%'>
+      <block wx:for="{{messageList}}" wx:key="id">
+        <swiper-item>
+          <view class='fs '>{{item.content}}</view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+
+  <!-- VIP -->
+<view class='vip mb20'>
+    <image mode='widthFix' src='/images/index/bigPacket.png' bindtap='toVIPshop' style='width:710rpx;'></image>
+    <view class='vip_combo fb mb20'>
+      <view class='vip_combo_a' bindtap='toProductVIPData' data-id='{{VipGiftList[0].id}}'>
+        <image mode='aspectFill' src='{{imgURL+VipGiftList[0].smallPic}}' style='width:300rpx;height:370rpx;'></image>
+        <image class='combo_tip' mode='widthFix' src='/images/index/Acombo.png' style='width:68rpx;height:86rpx;'></image>
+      </view>
+      <view class='vip_combo_right vb'>
+        <view class='vip_combo_a' bindtap='toProductVIPData' data-id='{{VipGiftList[1].id}}'>
+          <image mode='aspectFill' src='{{imgURL+VipGiftList[1].smallPic}}' style='width:400rpx;height:180rpx;'></image>
+          <image class='combo_tip' mode='widthFix' src='/images/index/Bcombo.png' style='width:68rpx;height:86rpx;'></image>
+        </view>
+        <view class='vip_combo_a' bindtap='toProductVIPData' data-id='{{VipGiftList[2].id}}'>
+          <image mode='aspectFill' src='{{imgURL+VipGiftList[2].smallPic}}' style='width:400rpx;height:180rpx;'></image>
+          <image class='combo_tip' mode='widthFix' src='/images/index/Ccombo.png' style='width:68rpx;height:86rpx;'></image>
+        </view>
+
+      </view>
+    </view>
+    <image class='mb20' mode='widthFix' src='/images/index/adv.jpg' style='width:100%;'></image>
+    <image bindtap='toRecharge' mode='widthFix' src='/images/index/chongzhi.png' style='width:100%'></image>
+  </view>
+
+
+</view>
+
+<!-- 热门商品 --> 
+<view class='hot'>
+  <view class='hot_title ac'>
+    <image mode='widthFix' src='/images/index/hot.png' style='width:684rpx;'></image>
+  </view>
+  <view class='hot_list fb'>
+    <block wx:for="{{homeProList}}" wx:key="id">
+      <view class='hot_list_item' bindtap='toProductData' data-id='{{item.id}}'>
+        <view class='{{item.isSpell==0?"hot_list_i_b":"hot_list_item_book"}}' bindtap="toProductData" data-id='{{item.id}}'>拼团商品</view>
+        <image mode='aspectFill' src='{{imgURL+item.smallPic}}' style='width:360rpx;height:360rpx;'></image>
+        <view class='hot_list_item_txt vb'>
+          <view class='s24 c3 of'>{{item.name}}</view>
+          <view class='fb'>
+            <view class=''> 
+              <!-- <text class='s24 c_r mr20' wx:if="{{userInfo&&userInfo.userType!=2}}">￥{{item.vipPrice}}</text> -->
+              <text class='s24 c_r mr20' wx:if="{{item.isSpell == 0}}">￥{{item.price}}</text>
+              <text class='s24 c_r mr20' wx:if="{{item.isSpell == 1}}">￥{{item.spellPrice}}</text>
+              
+              <text class='s22 c9 td_line'>￥{{item.showPrice}}</text>
+            </view>
+            <view class='s20 c9'>销量：{{item.saleNum}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view> 
+</view>
+
+<view class='CouponView' wx:if="{{showCoupon}}">
+  <image mode='widthFix' class='coupon' src='/images/index/coupon.png'></image>
+
+  <image  class='cancel' mode='widthFix' bindtap='hideModal' src='/images/cancelW.png'></image>
+  <button class='couponBut' bindgetuserinfo='loginToCoupon' open-type='getUserInfo'>立即领取</button>
+</view>
+

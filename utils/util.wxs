@@ -1,0 +1,9 @@
+var toFix={
+  NoFormat:function(value){
+    var v=value;
+    return v.toFixed(2)
+  }
+}
+module.exports={
+  NoFormat: toFix.NoFormat
+}

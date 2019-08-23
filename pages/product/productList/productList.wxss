@@ -1,0 +1,26 @@
+/* pages/product/productSort/productSort.wxss */
+@import "/utils/style/flexstyle.wxss";
+
+/* 热门商品 */
+
+.hot {
+  background: #fff;
+  margin-bottom: 30rpx;
+}
+
+.hot_title {
+  height: 96rpx;
+}
+
+.hot_list {
+  padding: 0 10rpx;
+  flex-wrap: wrap;
+}
+
+.hot_list_item_txt {
+  height: 120rpx;
+  width: 360rpx;
+  padding: 20rpx 20rpx 30rpx;
+  line-height: 1;
+  margin-bottom: 10rpx;
+}

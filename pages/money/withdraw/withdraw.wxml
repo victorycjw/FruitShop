@@ -1,0 +1,66 @@
+<!--pages/money/withdraw/withdraw.wxml-->
+<view class='top_border'></view>
+
+<view>
+
+  <view class='item30 fb bw bd s28'>
+    <view class='c6'>当前零钱</view>
+    <view class='textw c_r'>￥{{userInfo.dibs}}</view>
+  </view>
+
+<view class='s28 item30 bw mb20' bindtap='toBankCard'>
+  <view wx:if="{{!bankItem}}" class='fb'>
+    <view>点击添加银行卡</view>
+    <image mode='widthFix' src='/images/my/right.png' style='width:12rpx'></image>
+  </view>
+
+  <view wx:else class='fb'>
+    <view>
+      <view>
+        <text class='mr20'>{{bankItem.name}}</text>
+        <text>{{bankItem.bankName}}</text>
+      </view>
+      <view class='s24 c9'>{{bankItem.bankCard}}</view>
+    </view>
+     <image mode='widthFix' src='/images/my/right.png' style='width:12rpx'></image>
+  </view>
+</view>
+
+
+
+
+  <view class='bw moneys'>
+
+    <!-- <view class='reItems fs'>
+      <block wx:for="{{[1,1,1,1,1]}}" wx:key="id">
+        <view class='reItem vc c_r'>
+          <view class='s28'>100元</view>
+        </view>
+      </block>
+    </view> -->
+
+  </view>
+  <view class='item30 bw'>
+
+    <view class='s28 textw mb30'>提现金额</view>
+
+      <view class='fs mt30 bd pb20'>
+        <view class='mr30'>￥</view>
+        <input type='digit' bindinput='inputmoney' value='{{inputMoney}}' placeholder='请输入提现金额'></input>
+      </view>
+
+      <view class='itembot bd'>
+        <button class='button s32 mb20' bindtap='saveDeposit'>立即提现</button>
+        <view class='c6 s24 ac'>提现说明：提现至少100元，且只能提取整百。提现有{{codeParamer}}%的手续费。</view>
+      </view>
+
+
+    <view class=' fb bw s28' bindtap='toWithdrawDetail'>
+      <view class='c6'>提现明细</view>
+      <image mode='widthFix' src='/images/my/right.png' style='width:12rpx'></image>
+    </view>
+
+  </view>
+      
+</view>
+

@@ -1,0 +1,49 @@
+<!--pages/shopping/shopping.wxml-->
+<wxs module="toFix" src="../../utils/util.wxs"></wxs>
+<import src="/utils/xmls/noneDataStyle/noneDataStyle.wxml" />
+<import src="/utils/xmls/maskLayer/maskLayer.wxml" />
+
+<view class='top_border'></view>
+<template is="noneDataStyle" data="{{data:carts}}" />
+
+<view class='pros'>
+  <block wx:for="{{carts}}" wx:key="id" >
+    <view class='pro fb bw mb20'>
+
+      <image mode='widthFix' class='checkImg' bindtap='checkState' data-index='{{index}}' src='{{item.checkState?"/images/my/ordercheckS.png":"/images/my/ordercheck.png"}}'></image>
+
+      <image mode='aspectFill' src='{{imgURL+item.productPic}}' class='proImg'></image>
+      <view class='vba proRight'>
+        <!-- 右上部分 -->
+        <view>
+          <view class='s26 of'>{{item.productName}}</view>
+          <view class='s22 c9' style='padding-top:8rpx'>规格：{{item.productSpecName}},{{item.colour}},{{item.model}}</view>
+        </view>
+
+        <!-- 右下部分 -->
+        <view class="fb">
+          <view class="s30 c_r">¥{{item.price}}</view>
+          <!-- 数量选择 -->
+          <view class="muns">
+            <view class="minus" data-index="{{index}}" catchtap="minus">-</view>
+            <input class="num" type='number' name="num" maxlength="3" value="{{item.number}}"/>
+            <view class="add" data-index="{{index}}" catchtap="add">+</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
+
+<view class="final fb">
+  <view class='ml30'>合计：
+    <span class="c_r">¥{{toFix.NoFormat(price)}}</span>
+  </view>
+
+  <view class='fe buttons '>
+    <button class='bg_o s32' bindtap='deleteCarts'>删除</button>
+    <button class='bg_r s32' bindtap='toShoppingSure'>结算</button>
+  
+  </view>
+
+</view>

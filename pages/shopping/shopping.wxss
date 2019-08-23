@@ -1,0 +1,72 @@
+/* pages/shopping/shopping.wxss */
+@import "/utils/style/flexstyle.wxss";
+@import "/utils/xmls/noneDataStyle/noneDataStyle.wxss";
+page{
+  background: #f5f5f5;
+  height: 100%
+}
+.pros{
+  overflow: auto;
+  height: 90%;
+}
+.pro{
+  padding: 20rpx 30rpx;
+}
+.checkImg{
+  width: 32rpx
+}
+.proRight{
+  width: 440rpx;
+  height: 166rpx
+}
+.proImg{
+  width: 180rpx;
+  height: 180rpx;
+}
+
+/* 数量选择器 */
+.muns{
+  display: flex;
+}
+.minus{
+  border: 1rpx solid #999;
+  border-right: none;
+  padding: 0 15rpx;
+  display: flex;
+  align-items: center
+}
+.num{
+  border: 1rpx solid #999;
+  width: 60rpx;
+  padding: 1rpx;
+  text-align: center;
+}
+.add{
+  border: 1rpx solid #999;
+  border-left: none;
+  padding: 0 15rpx;
+    display: flex;
+  align-items: center
+}
+
+/* 底部按钮区 */
+.final{
+  height: 88rpx;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: #fff;
+}
+.buttons button{
+  width: 180rpx;
+  height: 88rpx;
+  color: #fff;
+  border-radius: 0
+}
+.bg_o{
+  background: #ffa200
+}
+.bg_r{
+  background: #f23030
+}

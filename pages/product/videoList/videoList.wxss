@@ -1,0 +1,27 @@
+/* pages/product/videoList/videoList.wxss */
+@import "/utils/style/flexstyle.wxss";
+page{
+  background: #f5f5f5;
+}
+video, .coverimg{
+  width: 750rpx;
+  height: 360rpx;
+
+}
+.coverimg{
+ position: absolute
+}
+.item20{
+  padding: 20rpx 30rpx
+}
+.playView{
+  width: 750rpx;
+  height: 360rpx;
+  position: relative;
+  top: 0;
+  left: 0;
+
+  background: rgba(0, 0, 0, 0.3)
+}
+
+

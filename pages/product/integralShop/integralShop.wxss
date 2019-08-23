@@ -1,0 +1,22 @@
+/* pages/product/integralShop/integralShop.wxss */
+@import "/utils/style/flexstyle.wxss";
+
+page{
+  background: #f5f5f5;
+}
+.banner{
+  width: 750rpx;
+  height: 360rpx
+}
+.item30{
+  padding: 30rpx
+}
+.proimg{
+  width: 180rpx;
+  height: 180rpx;
+  margin-right: 30rpx
+}
+.proLeft{
+  width: 470rpx;
+  height: 180rpx
+}

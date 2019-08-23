@@ -1,0 +1,83 @@
+<!--pages/money/bankCard/bankCard.wxml-->
+
+<!-- 添加银行卡 -->
+<view class='top_border'></view>
+<view class='fb bw top' bindtap='moneyBackModal' data-type='add'>
+  <view>+ 添加银行卡</view>
+  <image mode='widthFix' src='/images/my/right.png' style='width:12rpx'></image>
+</view>
+
+<!-- 银行卡列表 -->
+
+<view wx:for="{{bankList}}" wx:key="id">
+  <view class='bank_item'>
+    <view class=''>
+      <view class='fb fontfff item_top' bindtap='editUserBankcardIsDefault' data-id='{{item.id}}'>
+        <view class=''>
+          <view style='padding-bottom:20rpx'>
+            <text class='s32' style='padding-right:40rpx'>{{item.bankName}}</text>
+            <text>{{item.name}}</text>
+          </view>
+          <view>{{item.bankCard}}</view>
+        </view>
+        
+        <view wx:if="{{item.isDefault==1}}">
+          <image src='/images/my/bankcheck.png' style='width:36rpx;height:36rpx'></image>
+        </view>
+      </view>
+
+      <view class='fa bw'>
+        <view class='ac item30' bindtap='moneyBackModal' data-type='edit' data-index='{{index}}' style='width:49%'>修改</view>
+        <view class='line'></view>
+        <view class='c_r ac item30' bindtap='deleteUserBankcard' data-id='{{item.id}}' style='width:49%'>删除</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view class='ModalStyle' style='' wx:if="{{showModalStatus}}">  
+  <form bindsubmit='addBankCard'>
+    <view class='Modal_title'>
+      <view>添加银行卡</view>
+      <image class='' bindtap='hideModal1' src='/images/cancel.png'></image>
+    </view>
+    <view class='Modal_item'>
+      <view>银行卡姓名</view>
+      <input class='end' placeholder-class='end' name="name" placeholder='输入绑定银行卡的姓名'></input>
+    </view>
+    <view class='Modal_item'>
+      <view>开户行</view>
+      <input class='end' placeholder-class='end' name="bankName" placeholder='输入开户行'></input>
+    </view>
+    <view class='Modal_item'>
+      <view>银行卡卡号</view>
+      <input class='end' placeholder-class='end' type='number' name="bankCard" placeholder='输入银行卡号'></input>
+    </view>
+    <button class='' form-type='submit'>提交</button>
+  </form>
+</view>
+
+<view class='ModalStyle' style='' wx:if="{{showModalStatus1}}">  
+  <form bindsubmit='editUserBankcard'>
+    <view class='Modal_title'>
+      <view>修改银行卡</view>
+      <image class='' bindtap='hideModal1' src='/images/cancel.png'></image>
+    </view>
+    <view class='Modal_item'>
+      <view>银行卡姓名</view>
+      <input class='end' placeholder-class='end' value='{{bankItem.name}}' name="name" placeholder='输入绑定银行卡的姓名'></input>
+    </view>
+    <view class='Modal_item'>
+      <view>开户行</view>
+      <input class='end' placeholder-class='end' value='{{bankItem.bankName}}' name="bankName" placeholder='输入开户行'></input>
+    </view>
+    <view class='Modal_item'>
+      <view>银行卡卡号</view>
+      <input class='end' placeholder-class='end' value='{{bankItem.bankCard}}' type='number' name="bankCard" placeholder='输入银行卡号'></input>
+    </view>
+    <button class='' form-type='submit'>提交</button>
+  </form>
+</view>
+
+<view class="commodity_screen" bindtap="hideModal1" wx:if="{{showModalStatus||showModalStatus1}}"></view> 

@@ -1,0 +1,21 @@
+<!--pages/product/productClass/productClass.wxml-->
+<view class='top_border'></view>
+<!-- 
+<view class='item20 topimg'>
+  <image mode='widthFix' src='/images/pro/jifen.png' bindtap='toIntegralShop' style='width:100%'></image>
+</view> -->
+
+<view>
+  <!-- <view class='item30 ac bd'>
+    <image mode='widthFix' src='/images/pro/allsort.png' style='width:683rpx'></image>
+  </view> -->
+  <view class='fs sortItems'>
+    <block wx:for="{{CategroyAllList}}" wx:key="id">
+      <view class='sortItem vc' bindtap='toProList' data-id='{{item.id}}' wx:if="{{item.id!='1a043f3c0e6c40d88ae08e5ff13e7368'&&item.id!='b10258690ba04387bba4f6a789af51d4'}}">
+        <image class='mb20' mode='widthFix' src='{{imgURL+item.icon}}' style='width:96rpx;height:96rpx'></image>
+        <view>{{item.name}}</view>
+      </view>
+    </block>
+  
+  </view>
+</view>

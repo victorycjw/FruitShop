@@ -1,0 +1,22 @@
+<!--pages/money/withdrawDetail/withdrawDetail.wxml-->
+<import src="/utils/xmls/noneDataStyle/noneDataStyle.wxml" />
+
+<template is="noneDataStyle" data="{{data:depositList}}" />
+<view class='bw'>
+  <block wx:for="{{depositList}}" wx:key="id">
+    <view class='fb bd item20'>
+      <view class='vs'>
+        <view>
+          <text>提现金额</text>
+          <text>￥{{item.money}}</text>
+        </view>
+        <view class='c9'>{{item.date}}</view>  
+      </view>
+      <view>
+         <view wx:if="{{item.state==0}}">未审核</view>
+        <view wx:if="{{item.state==1}}">审核通过</view>
+        <view wx:if="{{item.state==2}}">审核未通过</view>
+      </view>
+    </view>
+  </block>
+</view>

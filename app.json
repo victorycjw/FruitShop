@@ -1,0 +1,93 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/welfare/welfare",
+    "pages/shopping/shopping",
+    "pages/people/people",
+    "pages/peopleData/collection/collection",
+    "pages/peopleData/address/address",
+    "pages/product/productList/productList",
+    "pages/product/productData/productData",
+    "pages/product/productVIPData/productVIPData",
+    "pages/peopleData/peopleInfo/peopleInfo",
+    "pages/peopleData/order/order",
+    "pages/peopleData/myEvaluation/myEvaluation",
+    "pages/peopleData/qrCode/qrCode",
+    "pages/peopleData/myTeam/myTeam",
+    "pages/peopleData/balance/balance",
+    "pages/peopleData/smallChange/smallChange",
+    "pages/peopleData/integral/integral",
+    "pages/peopleData/balanceDetail/balanceDetail",
+    "pages/peopleData/smallChangeDetail/smallChangeDetail",
+    "pages/shoppingSure/shoppingSure",
+    "pages/money/recharge/recharge",
+    "pages/money/withdraw/withdraw",
+    "pages/product/productSort/productSort",
+    "pages/peopleData/orderData/orderData",
+    "pages/peopleData/coupon/coupon",
+    "pages/peopleData/evaluate/evaluate",
+    "pages/money/withdrawDetail/withdrawDetail",
+    "pages/money/bankCard/bankCard",
+    "pages/product/videoList/videoList",
+    "pages/product/integralShop/integralShop",
+    "pages/product/integralPro/integralPro",
+    "pages/product/integralSure/integralSure",
+    "pages/system/dzInterest/dzInterest",
+    "pages/peopleData/changeToBalance/changeToBalance"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "私人水果店",
+    "navigationBarTextStyle": "black"
+  },
+  "subPackages": [
+    {
+      "root": "package",
+      "pages": [
+        "pages/sweep/sweep",
+        "pages/sweepDetail/sweepDetail",
+        "pages/createRecord/createRecord",
+        "pages/game/game",
+        "pages/subsidy/subsidy"
+      ]
+    }
+  ],
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#f23030",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/index/index.png",
+        "selectedIconPath": "images/index/indexS.png"
+      },
+      {
+        "pagePath": "pages/product/productSort/productSort",
+        "text": "分类",
+        "iconPath": "images/index/fenlei.png",
+        "selectedIconPath": "images/index/fenlei2.png"
+      },
+      {
+        "pagePath": "pages/shopping/shopping",
+        "text": "购物车",
+        "iconPath": "images/index/shopping.png",
+        "selectedIconPath": "images/index/shoppingS.png"
+      },
+      {
+        "pagePath": "pages/people/people",
+        "text": "我的",
+        "iconPath": "images/index/people.png",
+        "selectedIconPath": "images/index/peopleS.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 60000,
+    "connectSocket": 60000,
+    "uploadFile": 60000,
+    "downloadFile": 60000
+  },
+  "sitemapLocation": "sitemap.json"
+}

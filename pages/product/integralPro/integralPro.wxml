@@ -1,0 +1,161 @@
+<!--pages/product/productData/productData.wxml-->
+<import src="/utils/xmls/maskLayer/maskLayer.wxml" />
+ <import src="/utils/wxParse/wxParse.wxml" />
+
+<!-- 遮罩 -->
+<template is="maskLayer" data="{{showModalStatus}}" />
+
+<view style='height:91%'>
+  <view class="top_img">
+    <image mode='aspectFit' src="{{imgURL+proData.bigPic}}"></image>
+  </view>
+
+  <view class="pro_title bw">
+    <view class="mb30 s28 of">{{proData.name}}</view>
+    <view class="fb">
+      <view class="c_r s36">{{proData.price?proData.price*5:''}}分</view>
+      <view class="c9 s22">已售{{proData.saleNum}}件</view>
+    </view>
+  </view>
+
+
+  <view class='fb ysItmes c6'>
+    <view class='fs'>
+      <image mode='widthFix' src='/images/pro/service.png'></image>
+      <view>品质保障</view>
+    </view>
+    <view class='fs'>
+      <image mode='widthFix' src='/images/pro/service.png'></image>
+      <view>优质产品</view>
+    </view>
+    <view class='fs'>
+      <image mode='widthFix' src='/images/pro/service.png'></image>
+      <view>精选品牌</view>
+    </view>
+    <view class='fs'>
+      <image mode='widthFix' src='/images/pro/service.png'></image>
+      <view>成本价</view>
+    </view>
+  </view>
+
+
+  <!-- 详情与评价 -->
+  <view class="fa bd bw">
+    <view class="swiperItem bd_r"  bindtap="choosebaby" data-id="0">详情</view>
+    <view class="swiperItem"  bindtap="choosebaby" data-id="1">评价</view>
+  </view>
+
+  <swiper current="{{current}}" bindchange="swiperchange">
+    <swiper-item style="height:0;">
+      <view class="">
+        <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+
+      </view>
+    </swiper-item>
+
+
+
+
+    <swiper-item>
+      <view class="" wx:if="{{!myEvaluate||myEvaluate.length==0}}">暂无评论！</view>
+      <view class=''>
+        <view class="item20 bd" wx:for="{{myEvaluate}}" wx:key="id">
+          <view class="fb mb20">
+            <view class='fs'>
+              <image class='mr30 peopleimg' src="{{item.obj.userPic}}" style=""></image>
+              <view class="">{{item.obj.userName}}</view>
+            </view>
+            <view class="s22 c9">{{item.obj.date}}</view>
+          </view>
+
+          <view class="s24 c6 mb20">{{item.obj.title}}</view>
+
+          <view class="fs commentPics">
+            <view class="" wx:for="{{item.list}}" wx:key="id" wx:for-item="itm" wx:for-index="imgindex" bindtap="lookImg" data-index='{{index}}'>
+              <image mode='aspectFill' src="{{imgURL}}{{itm.commentPic}}" style="width:220rpx;height:220rpx;"></image>
+            </view>
+          </view>
+
+          <!-- <view class='c9 s22'>规格：{{item.obj.}}</view> -->
+        </view>
+      
+      </view>
+
+        <!-- <view class="classname" wx:for="{{item.addComments}}" wx:for-item="add">
+          <view class="td order_info">
+            <view class="">追加评论时间：{{add.COMMENTS_DATE}}</view>
+          </view>
+          <view class="comment_text">
+            {{add.COMMENTS_CONTENT}}
+          </view>
+          <view class="td comment_pic">
+            <view class="" wx:for="{{add.imgs}}" wx:for-item="itm" bindtap="lookImg" data-img="{{add.imgs}}" data-current="{{itm.COMMENTS_IMG_URL}}">
+              <image src="{{imgURL}}{{itm.COMMENTS_IMG_URL}}" style="width:80rpx;height:80rpx;"></image>
+            </view>
+          </view>
+        </view> -->
+
+
+    </swiper-item>
+  </swiper>
+
+</view>
+
+
+<view class="bottomItem bw fb">
+  <view class='s22 ml30 vc' bindtap="{{collect?'removeCollect':'saveCollect'}}" style='width:100rpx'>
+    <image class='mb10' mode='widthFix' src="{{collect?'/images/pro/collS.png':'/images/pro/coll.png'}}" style="width:36rpx"></image>
+    <view class="">{{collect?'已收藏':'收藏'}}</view>
+  </view>
+
+  <view style='width:15%'>
+    <button class='bottoview s22' open-type='contact' style='width:100rpx'>
+      <image class='mb10' mode='widthFix' src='/images/pro/kefu.png' style='width:39rpx'></image>
+      <view>客服</view>
+    </button>     
+  </view>
+  <view class="fs endButton s32" >
+    <view class="bg_o ac" bindtap="showSpecification" data-name="cart">加入购物车</view>
+    <view class="bg_r ac" bindtap="showSpecification" data-name="shopping">立即购买</view>
+  </view>
+</view>
+
+
+<!-- 选择支付方式 -->
+<view class='specclass' wx:if="{{showSpecification}}">
+  <view class='specclass_title ac s32 c3'>选择商品规格</view>
+  <image class='cancel' catchtap='hideModal' mode='widthFix' src='/images/cancel.png' style='width:32rpx;'></image>
+  <view class='item30'>
+    <view class="fs mb30">
+      <image class='specclassImg mr30' mode='aspectFill' src="{{imgURL+proData.smallPic}}"></image>
+      <view class="va specProRight">
+        <view class="s26 of" style='width:510rpx'>{{proData.name}}</view>
+        <!-- <view class="info">{{product.PRODUCT_INFO}}</view> -->
+        <view class="c_r s30">{{proSpecItem.specPrice?proSpecItem.specPrice*5:''}}分</view>
+      </view>
+    </view>
+
+    <view class='pb30 bd mb30'>
+      <view>规格：</view>
+      <radio-group class='fs specList'bindchange="specListChange">
+        <label wx:for="{{proSpecList}}" wx:key="id">
+          <radio value="{{index}}" checked="{{item.checked}}" hidden='true'/>
+            <view class='{{specIndex==index?"check":"nocheck"}} size' >{{item.specName}}</view>
+        </label>
+      </radio-group>
+    </view>
+
+    <view class="fb">
+      <view class="">数量：</view>
+      <view class="muns">
+        <view class="minus" bindtap="minus">-</view>
+        <input class="num" type='number' name="num" maxlength="3" value="{{num}}" bindinput='inputnumber'/>
+        <view class="add" bindtap="add">+</view>
+      </view>
+    </view>
+
+  </view>
+
+
+  <button class='payclass_btn ac s32' catchtap='addCarts'>确定</button>
+</view>

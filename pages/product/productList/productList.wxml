@@ -1,0 +1,34 @@
+<!--pages/product/productSort/productSort.wxml-->
+<image wx:if="{{catId!='d31bff9748734aedb735f476c27fb944'}}" mode='aspectFill' src='{{imgURL+catData.banner}}' style='width:100%;height:360rpx'></image>
+
+<view wx:if="{{catId=='d31bff9748734aedb735f476c27fb944'}}">
+  <block wx:for="{{videoList}}" wx:key="id">
+    <view class='bw mb20'>
+      <!-- 视频  -->
+      <video src='{{imgURL+videoList[0].videoUrl}}' poster="{{imgURL+videoList[0].cover}}" style='width:100%'></video>
+    </view>
+  </block>
+</view>
+
+
+<!-- 为您推荐 -->
+<view class='hot'>
+  <view class='hot_title ac'>
+    <image mode='widthFix' src='/images/index/hot.png' style='width:684rpx;'></image>
+  </view>
+  <view class='hot_list fb'>
+    <block wx:for="{{proList}}" wx:key="id">
+      <view class='hot_list_item' bindtap='toProductData' data-id='{{item.id}}'>
+        <image mode='aspectFill' src='{{imgURL+item.smallPic}}' style='width:360rpx;height:360rpx;'></image>
+        <view class='hot_list_item_txt vb'>
+          <view class='s24 c3 of'>{{item.name}}</view>
+          <view class='fb'>
+            <view class='s24 c_r'>￥{{item.price}}</view>
+            <view class='s20 c9'>销量：{{item.saleNum}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+
+  </view>
+</view>

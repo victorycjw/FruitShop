@@ -1,0 +1,16 @@
+<!--pages/product/integralShop/integralShop.wxml-->
+<image mode='aspectFill' class='banner' src='{{imgURL+catData.banner}}'></image>
+<view class='bw'>
+  <block wx:for="{{integralList}}" wx:key="id">
+    <view class='item30 bd fs' bindtap='toProductData' data-id='{{item.id}}'>
+      <image class='proimg' src='{{imgURL+item.smallPic}}'></image>
+      <view class='va proLeft'>
+        <view class='s26'>{{item.name}}</view>
+        <view class='fb'>
+          <view class='c_r s30'>{{item.integral}}分</view>
+          <view class='c9 s20'>销量：{{item.saleNum}}</view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
