@@ -1,0 +1,46 @@
+/* pages/game/game.wxss */
+@import "/utils/style/flexstyle.wxss";
+@import "../sweep/sweep.wxss";
+
+page {
+  background: #f5f5f5;
+}
+
+
+.onlineNum{
+  padding-top: 15rpx;
+}
+.creatmain {
+  position: relative;
+}
+
+.gamemain {
+  font-size: 26rpx;
+}
+
+.gamemain_title>view {
+  width: 25%;
+  line-height: 80rpx;
+  text-align: center;
+  background: #c61c20;
+  color: #fff;
+}
+
+.gamemain_text>view {
+  width: 25%;
+  height: 100rpx;
+  text-align: center;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+
+.gamemain_text_result {
+  color: #13b1b7;
+}
+
+.on {
+  color: #c61c20;
+}
+
+.nodata {
+  margin-top: 30rpx;
+}

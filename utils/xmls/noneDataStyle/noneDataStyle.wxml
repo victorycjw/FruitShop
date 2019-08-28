@@ -1,0 +1,40 @@
+<!-- <template name="proList">
+  <view class="bottom">
+    <view class="td pro_list">
+      <block wx:for="{{proListData}}" wx:key="">
+        <template is="proList0" data="{{item}}" />
+      </block>
+    </view>
+  </view>
+</template> -->
+<template name="noneDataStyle">
+  <!-- 没有数据的样式 -->
+  <view class='none_data_style vc' wx:if="{{data&&data.length==0||!data}}">
+    <image src="/images/none.png" mode='widthFix' style='width:240rpx;height:164rpx;'></image>
+    <view class='none_data_text'>{{tip?tip:"暂无数据"}}</view>
+  </view>
+</template>
+<template name="loadingStyle">
+  <!-- loading......... -->
+  <view class='loading ac' wx:if="{{data==1}}" style='background:#fff;'>
+    <image mode='widthFix' src='/images/loading.gif' style='width:500rpx;height:320rpx;'></image>
+  </view>
+</template>
+<template name="loadingStyleSmall">
+  <!-- loading......... -->
+  <view class='allcenter {{data==1?"":"nonestyle"}}' style='background:#fff;'>
+    <image mode='widthFix' src='/images/loadingSmall.gif' style='width:140rpx;height:64rpx'></image>
+  </view>
+</template>
+<template name="ifloadingStyleSmall">
+  <!-- loading......... -->
+  <view class='allcenter' style='background:#fff;' wx:if="{{data==1}}">
+    <image mode='widthFix' src='/images/loadingSmall.gif' style='width:140rpx;height:64rpx'></image>
+  </view>
+</template>
+<template name="endStyleSmall">
+  <!-- loading......... -->
+  <view class='endlist' wx:if="{{data==1}}">
+    没有更多数据
+  </view>
+</template>

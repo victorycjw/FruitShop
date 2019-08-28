@@ -1,0 +1,33 @@
+<view class='sdmain'>
+  <!-- 顶部信息 -->
+  <view class='open_top verticalcenter'>
+    <image mode='widthFix' src='../../images/listbg.jpg' style='width:100%;display:block;'></image>
+    <block wx:if="{{lanmine_info}}">
+      <view class='open_money'>{{lanmine_info.money}}</view>
+      <view class='open_top_info'>
+        <view>红包金额 : {{lanmine_info.obj.coin}} {{sweepType==2?'元':'积分 | 雷: '+lanmine_info.obj.landmineNum}} </view>
+        <view>参与人数 : {{lanmine_info.obj.quantity-lanmine_info.obj.restNum}}/{{lanmine_info.obj.quantity}}</view>
+      </view>
+    </block>
+
+  </view>
+  <!-- 列表信息 -->
+  <view class='open_list'>
+    <block wx:for="{{lanmine_info.list}}">
+      <view class='open_list_item flex_between'>
+        <view class='open_list_item_left flex_start'>
+          <image mode='widthFix' src='{{item.userPic}}' style='width:100rpx;display:block;'></image>
+          <view class='open_list_name'>
+            <view>{{item.userName}}</view>
+            <view class='smallgray'>{{item.createDate}}</view>
+          </view>
+        </view>
+        <view wx:if="{{false}}" class='zhuang'>庄</view>
+        <view class='open_list_item_right'>
+          <!-- <view>{{item.MONEY}}</view> -->
+          <view class='open_list_money {{item.isWin ==1?"":"on"}}'>{{item.isWin ==1?"+":""}}{{item.money}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,69 @@
+<!--pages/peopleData/address/address.wxml-->
+<view class='address' wx:if="{{isdata==1}}">
+  <view wx:for="{{addressList}}" wx:key="id">
+    <view class='address_item'>
+      <view class='address_item_name  s28 c3'>
+        <view class='fb mb40'>
+          <view>{{item.name}}</view>
+          <view>{{item.phone}}</view>
+        </view>
+        <view class='s26'>地址：{{item.address}}</view>
+      </view>
+      <!-- 按钮区域 -->
+      <view class='address_item_btn fb s26 c3'>
+        <view class='fs' bindtap='{{tab==1?"sureDefault":"editUserAddressIsDefault"}}' data-id='{{item.id}}'>
+          <image class='mr20' mode='widthFix' src='/images/my/{{item.isDefault==1?"checkS":"check"}}.png' style='width:32rpx;height:32rpx;'></image>
+          <view class='c6'>{{tab==1?"使用此地址":"设为默认地址"}}</view>
+          <!-- <view class='c6' wx:if="{{tab==2}}">使用此地址</view> -->
+        </view>
+        <view class='fe'>
+          <!-- <view class='address_item_btn_edit ac mr30'>修改</view> -->
+          <view class='address_item_btn_edit ac' bindtap='deleteUserAddress' data-id='{{item.id}}'>删除</view>
+        </view>
+
+      </view>
+    </view>
+
+  </view>
+
+
+  <button class='address_add ac' bindtap='AddToaddress'>
+    <image class='mr20' mode='widthFix' src='/images/my/add.png' style='width:28rpx;height:28rpx;'></image>
+    <view class='s32 c3 cw'>新增收货地址</view>
+  </button>
+
+</view>
+
+
+
+
+<form bindsubmit='addUserAddress'>
+  <view class='newaddress' wx:if="{{isdata!=1}}">
+    <view class='newaddress_item fb'>
+      <view class='s28 c3'>收货人</view>
+      <input class='s28 c3' placeholder='请输入' placeholder-class='c9' name="name"></input>
+    </view>
+    <view class='newaddress_item fb'>
+      <view class='s28 c3'>电话</view>
+      <input class='s28 c3' placeholder='请输入' placeholder-class='c9' type='number' name="phone" maxlength='11'></input>
+    </view>
+    <view class='newaddress_item fb'>
+      <view class='s28 c3'>选择省市区</view>
+      <picker class='s28' mode="region" value='{{region}}' bindchange='regionChange'>
+        <text class='{{regionItem?"c3":"c9"}} mr20'>{{regionItem?regionItem:'请选择'}}</text>
+        <text class='c9'>></text>
+      </picker>
+    </view>
+
+    <!-- 详细门号 -->
+    <view class='newaddress_door'>
+      <view class='newaddress_door_title fs s28 c3'>详细地址</view>
+      <textarea class='s28' placeholder='请输入详细地址' name="details">
+
+      </textarea>
+    </view>
+
+    <button class='address_add ac s32 c3 mb30' form-type='submit'>确认</button>
+  </view>
+
+</form>

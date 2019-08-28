@@ -1,0 +1,10 @@
+/* pages/system/dzInterest/dzInterest.wxss */
+.top{
+  margin-bottom: 98rpx
+}
+.botBut{
+  position: fixed;
+  bottom: 0;
+  height: 96rpx;
+  width: 100%
+}

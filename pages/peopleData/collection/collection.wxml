@@ -1,0 +1,26 @@
+<!--pages/peopleData/collection/collection.wxml-->
+<!-- 无数据样式 -->
+<import src="/utils/xmls/noneDataStyle/noneDataStyle.wxml" />
+<!-- 顶部分界线 -->
+<view class='top_border'></view>
+
+<!-- 热门商品 -->
+
+<template is="noneDataStyle" data="{{data:collectList}}" />
+
+<view class='hot_list fb'>
+  <view wx:for="{{collectList}}" wx:key="id">
+    <view class='hot_list_item '>
+      <image mode='aspectFill' src='{{imgURL+item.product.smallPic}}' style='width:360rpx;height:360rpx;'></image>
+      <view class='hot_list_item_txt vb'>
+        <view class='s24 c3 of'>{{item.toCollectName}}</view>
+        <view class='fb'>
+          <view class='s24 c_r'>￥{{item.product.price}}</view>
+          <view class='s20 c9'>销量：{{item.product.saleNum}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>
+

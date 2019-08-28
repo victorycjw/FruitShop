@@ -1,0 +1,44 @@
+<!--pages/peopleData/myTeam/myTeam.wxml-->
+<import src="/utils/xmls/noneDataStyle/noneDataStyle.wxml" />
+<view class='top_border'></view>
+<!-- <template is="noneDataStyle" data="{{data:brachList}}" /> -->
+
+<view class='bw bd fb item'>
+  <view class='topleft'>
+    <image mode='widthFix' src='{{userInfo.wxPic}}' style='width:88rpx'></image>
+    <view class='va'>
+      <view class='s28'>{{userInfo.wxName}}</view>
+      <view class='s24 c9'>{{userInfo.createrDate}}</view>
+    </view>
+  </view>
+
+  <view class='s26'>
+    <text>业绩</text>
+    <text class='c_r'>￥{{userInfo.totalMoney}}</text>
+    <text>，共邀请</text>
+    <text class='c_r'>{{userInfo.totalNum}}</text>
+    <text>人</text>
+  </view>
+
+</view>
+
+
+<block wx:for="{{brachList}}" wx:key="id">
+  <view class='fb bd item'>
+    <view class='topleft'>
+      <image mode='widthFix' src='{{item.wxPic}}' style='width:88rpx'></image>
+      <view class='va'>
+        <view class='s28'>{{item.wxName}}</view>
+        <view class='s24 c9'>{{item.createrDate}}</view>
+      </view>
+    </view>
+
+    <view class='s26'>
+      <text>业绩</text>
+      <text class='c_r'>￥{{item.totalMoney}}</text>
+      <text>，共邀请</text>
+      <text class='c_r'>{{item.totalNum}}</text>
+      <text>人</text>
+    </view>
+  </view>
+</block>

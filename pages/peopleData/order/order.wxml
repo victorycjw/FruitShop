@@ -1,0 +1,117 @@
+<!--pages/peopleData/order/order.wxml-->
+<wxs module="toFix" src="../../../utils/util.wxs"></wxs>
+<import src="/utils/xmls/noneDataStyle/noneDataStyle.wxml" />
+<import src="../../../utils/xmls/maskLayer/maskLayer.wxml" />
+
+<view class='top_border'></view>
+<template is="maskLayer" data="{{showModalStatus}}" />
+
+<view class="fa bd bw">
+  <block wx:for="{{order_title}}" wx:key="id">
+    <view class="{{current==index?'titlecolor':''}} titleTop" bindtap="changeTitle" data-id="{{index}}">
+      <view class='order_title_text'>{{item}}</view>
+    </view>
+  </block>
+</view>
+
+<swiper current="{{current}}" bindchange="changeSwiper" interval='{{interval}}' duration='{{duration}}' style='height:90%'>
+
+  <block wx:for="{{orders}}" wx:key="id" wx:for-item="swiperItem" wx:for-index="swiperIndex">
+    <swiper-item>
+      <!-- <view class="nullOrder" wx:if="{{orders[current]==0}}">您还没有相关的订单</view>  -->
+      <template is="noneDataStyle" data="{{data:orders[swiperIndex]}}" />
+      <block wx:for="{{orders[swiperIndex]}}" wx:key="id">
+        <view class="orders bw mb20" bindtap='toOrderData' data-item='{{item}}'>
+          <view class="fb pb30 bd">
+            <view class="">{{item.date}}</view>
+            <view class="c_r">
+              <label wx:if="{{item.state==1&&(item.refundState == 1 || item.refundState == 4)}}">等待买家付款</label>
+              <label wx:if="{{item.state==2&&(item.refundState == 1 || item.refundState == 4)}}">等待卖家发货</label>
+              <label wx:if="{{item.state==3&&(item.refundState == 1 || item.refundState == 4)}}">卖家已发货</label>
+              <label wx:if="{{item.state==4&&(item.refundState == 1 || item.refundState == 4)}}">已完成</label>
+              <label wx:if="{{item.state ==6&&(item.refundState == 1 || item.refundState == 4)}}">待分享</label>
+            </view>
+          </view>
+          <block wx:for="{{item.pro_list}}" wx:key="id" wx:for-index="proindex" wx:for-item="proitem">
+            <view class="pros bd fb" bindtap="jump" data-orderId="{{proitem.id}}">
+              <image mode='aspectFill' class='mr30' src="{{imgURL+proitem.productPic}}"></image>
+              <view class='va prosRight'>
+                <view class="">
+                  <view class="s26 of">{{proitem.productName}}</view>
+                  <view class="gray_font s22">规格：{{proitem.productSpecName}} {{proitem.colour}} {{proitem.model}}</view>
+                </view>
+                <view class="fb">
+                  <view class="red_font big_font_30" wx:if="{{ proitem.isSpell == 0}}">￥{{toFix.NoFormat(proitem.price)}}</view>
+                  <view class="red_font big_font_30" wx:if="{{ proitem.isSpell == 1}}">￥{{proitem.spellPrice}}</view>
+                  <!-- <view class="red_font big_font_30" wx:if="{{item.payStyle==4}}">{{proitem.price}}积分</view> -->
+                  <view class="">×{{proitem.number}}</view>
+                </view>
+              </view>
+            </view>
+          </block>
+          <view class="fe buts s24" bindtap="dis">
+            <view class="right" style="width:100%;display:flex;justify-content:space-between;border:0;">
+              <view style="border:0;margin-left:0;padding-left:0;" wx:if="{{item.isSpell==1}}">
+                <image src="/images/mine/pintuan.png" style="width:40rpx;height:40rpx;border:0;"></image>
+              </view>
+              <view style="border:0;margin-left:0;padding-left:0;" wx:if="{{item.isSpell==0}}">
+
+              </view>
+              <view class="one" style="display:flex;justify-content:flex-end;">
+                <view class="" catchtap="callMe" wx:if="{{item.state == 1 || item.state == 2 || item.state == 3 || item.state==6}}">联系卖家</view>
+                <view class="" wx:if="{{item.isSpell == 0 && (item.state == 1 || item.state == 2 )}}" data-id='{{item.id}}' catchtap="cancelOrder">取消订单</view>
+                <view class="" wx:if="{{item.state==3&&(item.refundState == 1 || item.refundState == 4)}}" catchtap="updateOrderStateRecipient" data-orderid='{{item.id}}'>确认收货</view>
+                <!-- <view class="" wx:if="{{item.state==4&&(item.refundState == 1 || item.refundState == 4)}}" catchtap="toEvaluate" data-index='{{index}}'>去评价</view> -->
+                <!-- <view class="" wx:if="{{item.state==1&&(item.refundState == 1 || item.refundState == 4)}}" catchtap="toFukuan" data-index='{{index}}'>去认付款</view> -->
+                <button class="" wx:if="{{item.state==1&&(item.refundState == 1 || item.refundState == 4)}}" catchtap="Pay" data-money='{{item.price}}' data-index="{{index}}" style="width:36%;height:47rpx;font-size:24rpx;border-radius:41rpx;line-height:47rpx;background:#f1312f;color:#fff">立即支付</button>
+
+                <button class="back" wx:if="{{item.state==6}}" data-money='{{item.price}}' data-index='{{index}}' style="width:55%;height:47rpx;font-size:24rpx;border-radius:41rpx;line-height:40rpx;" bindtap="fenxiang" data-codeid="{{item.id}}" open-type="share">邀请好友拼单</button>
+              </view>
+
+              <!-- <button class="back" wx:if="{{item.state==1}}" catchtap="showPay" data-money='{{item.price}}' data-index='{{index}}' style="height:44rpx;width:148rpx;font-size:26rpx;line-height:44rpx;border-radius:24rpx;margin-left:16rpx;"  open-type="share" >拼团购</button> -->
+            </view>
+          </view>
+
+        </view>
+      </block>
+      <!-- <view class="bottomicon" wx:if="{{swiperItem.pro_list.length!=0}}">
+        <image src="/images/mine/gongsi.png"></image>
+        <view>中原聚信技术支持</view>
+      </view> -->
+    </swiper-item>
+  </block>
+</swiper>
+<!-- 选择支付方式 -->
+<!-- <view class='payclass' wx:if="{{showPay}}">
+  <view class='payclass_title ac s32 c3'>支付方式</view>
+  <image class='cancel' catchtap='hideModal' mode='widthFix' src='/images/cancel.png' style='width:32rpx;'></image> -->
+<!-- <view class='payclass_item fb' catchtap='choosePayClass' data-types='2'>
+    <view class='fs'>
+      <image class='mr30' mode='widthFix' src='/images/my/{{payStyle==2?"checkS":"check"}}.png' style='width:32rpx;'></image>
+      <view class='s28 c3'>余额支付</view>
+    </view>
+    <view class='s28 c9'>￥{{userInfo.balance}}</view>
+  </view> -->
+<!-- <view class='payclass_item fb mb50' catchtap='choosePayClass' data-types='3'>
+    <view class='fs'>
+      <image class='mr30' mode='widthFix' src='/images/my/{{payStyle==3?"checkS":"check"}}.png' style='width:32rpx;'></image>
+      <view class='s28 c3'>零钱支付</view>
+    </view>
+    <view class='s28 c9'>￥{{userInfo.dibs}}</view>
+  </view> -->
+<!-- <view class='payclass_item fb mb50' catchtap='choosePayClass' data-types='1'>
+    <view class='fs'>
+      <image class='mr30' mode='widthFix' src='/images/my/{{payStyle==1?"checkS":"check"}}.png' style='width:32rpx;'></image>
+      <view class='s28 c3'>微信支付</view>
+    </view>
+  </view>
+  <button class='payclass_btn ac s32' catchtap='Pay'>确定</button>
+</view> -->
+
+
+<view class='refundclass' wx:if="{{refundStyle}}">
+  <form bindsubmit='saveOrderRefund'>
+    <input placeholder='输入退款原因' name='refundReason'></input>
+    <button class='submitBut' form-type='submit'>提交</button>
+  </form>
+</view>

@@ -1,0 +1,15 @@
+<!-- <template name="proList">
+  <view class="bottom">
+    <view class="td pro_list">
+      <block wx:for="{{proListData}}" wx:key="">
+        <template is="proList0" data="{{item}}" />
+      </block>
+    </view>
+  </view>
+</template> -->
+<template name="maskLayer">
+  <!-- 遮罩层 -->
+  <view class="commodity_screen" bindtap="hideModal" catchtouchmove='catchMove' wx:if="{{showModalStatus}}"></view>
+  <!-- <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+</view> -->
+</template>

@@ -1,0 +1,37 @@
+<!--index.wxml-->
+<view class="gamemain verticalcenter">
+  <image mode='widthFix' src='../../images/xiaojifen.jpg' style='width:100%;display:block;'></image>
+  <!-- 头像信息 -->
+  <view class="userinfo">
+    <image bindtap="{{userInfo.userId?'':'login'}}" class="userinfo-avatar" src="{{userInfo.wxPic?userInfo.wxPic:'../../images/indexAvatar.jpg'}}" background-size="cover"></image>
+    <text bindtap="{{userInfo.userId?'':'login'}}" class="userinfo-nickname">{{userInfo.wxName?userInfo.wxName:'授权登录'}}</text>
+    <!-- <view wx:if="{{userInfo.CLIENT_ID}}" class='userid'>ID: {{userInfo.CLIENT_ID}}</view> -->
+  </view>
+  <!-- 我的积分 -->
+  <view class='myCoins verticalcenter'>
+    <view>我的积分</view>
+    <view class='myCoins_num'>{{userInfo.integral}}</view>
+  </view>
+  <!-- 在线人数 -->
+  <view class='onlineNum verticalcenter'>
+    <view>在线人数</view>
+    <view class='myCoins_num'>{{online}}</view>
+  </view>
+</view>
+<view class='gamemain'>
+  <view class='gamemain_title flex_between'>
+    <view>期号</view>
+    <view>游戏类型</view>
+    <view>时间</view>
+    <view>游戏积分</view>
+    <view>结果</view>
+  </view>
+  <view class='gamemain_text flex_between s24' bindtap='toSweepDetail' data-id='{{item.id}}' wx:for="{{gameList}}">
+    <view class='allcenter'>{{item.issue}}</view>
+    <view class='allcenter'>{{item.type==0?"抢补贴":"抢积分"}}</view>
+    <view class='allcenter'>{{item.createDate}}</view>
+    <view class='allcenter'>{{item.money}}</view>
+    <view class='allcenter gamemain_text_result {{item.isWin ==1?"":"on"}}'>{{item.isWin ==1?"+":"-"}}{{item.PROFIT}}</view>
+  </view>
+  <view class='allcenter nodata' wx:if="{{gameList.length==0}}">暂无记录</view>
+</view>

@@ -1,0 +1,304 @@
+view {
+  box-sizing: border-box;
+}
+
+image {
+  height: 100rpx;
+  display: block;
+  flex-shrink: 0;
+}
+
+.w100 {
+  width: 100%;
+}
+
+.fs0 {
+  flex-shrink: 0;
+}
+
+.allcenter, .ac {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.verticalcenter, .vc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.verticalstart, .vs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.verticalend, .ve {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.verticalbetween, .vb {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.verticalbetweenauto, .vba {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.flex_column, .va{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.flex_start, .fs {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.flex_end, .fe {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.flex_between, .fb {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex_betweenauto, .fba {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex_around, .fa {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.inline_block, .ib {
+  display: inline-block;
+}
+
+/* 灰色小字 */
+
+.color0, .c0 {
+  color: #000;
+}
+
+.color3, .c3 {
+  color: #333;
+}
+
+.color6, .c6 {
+  color: #666;
+}
+
+.color9, .c9 {
+  color: #999;
+}
+
+.colorw, .cw {
+  color: #fff;
+}
+
+/* 通用字号设置,字间距,字体粗细 */
+
+.font_size22, .s20 {
+  font-size: 20rpx;
+  font-weight: 300;
+}
+
+.font_size22, .s22 {
+  font-size: 22rpx;
+  font-weight: 300;
+}
+
+.font_size24, .s24 {
+  font-size: 24rpx;
+  font-weight: 400;
+}
+
+.font_size26, .s26 {
+  font-size: 26rpx;
+  font-weight: 400;
+}
+
+.font_size28, .s28 {
+  font-size: 28rpx;
+  /* transform: scaleY(1.1) */
+}
+
+.font_size30, .s30 {
+  font-size: 30rpx;
+  /* transform: scaleY(1.1) */
+}
+
+.font_size32, .s32 {
+  font-size: 32rpx;
+  /* transform: scaleY(1.1) */
+}
+
+.font_size36, .s36 {
+  font-size: 36rpx;
+  /* transform: scaleY(1.1) */
+}
+
+.font_size40, .s40 {
+  font-size: 40rpx;
+}
+.font_size48, .s48 {
+  font-size: 48rpx;
+}
+.font_size60, .s60 {
+  font-size: 60rpx;
+}
+
+/* 通用颜色设置 */
+
+.color_g, .c_g {
+  color: #6ebb39;
+}
+
+.background_g, .bg_g {
+  background: #6ebb39;
+}
+.background_white, .bw{
+  background: #fff
+}
+
+.color_c, .c_c {
+  color: #fd823f;
+}
+
+.color_r, .c_r {
+  color: #f23030;
+}
+
+.font_weight3, .fw3 {
+  font-weight: 300;
+}
+
+/* 通用边距设置 */
+
+.margin_r10, .mr10 {
+  margin-right: 10rpx;
+}
+
+.margin_r20, .mr20 {
+  margin-right: 20rpx;
+}
+
+.margin_r30, .mr30 {
+  margin-right: 30rpx;
+}
+
+.margin_l10, .ml10 {
+  margin-left: 10rpx;
+}
+
+.margin_l20, .ml20 {
+  margin-left: 20rpx;
+}
+
+.margin_l30, .ml30 {
+  margin-left: 30rpx;
+}
+
+.margin_b20, .mb10 {
+  margin-bottom: 10rpx;
+}
+
+.margin_b20, .mb20 {
+  margin-bottom: 20rpx;
+}
+
+.margin_b30, .mb30 {
+  margin-bottom: 30rpx;
+}
+
+.margin_t20, .mt20 {
+  margin-top: 20rpx;
+}
+.padding_b30, .pb30{
+  padding-bottom: 30rpx
+}
+.padding_t20, .pt20{
+  padding-top: 20rpx
+}
+.padding_t30, .pt30{
+  padding-top: 30rpx
+}
+.padding_b20, .pb20{
+  padding-bottom: 20rpx
+}
+
+
+
+.border, .bd {
+  border-bottom: 1rpx solid #ededed;
+}
+
+/* 顶部分界线 */
+
+.top_border {
+  width: 100%;
+  height: 1rpx;
+  background: #ededed;
+  position: fixed;
+  top: 0;
+}
+
+.bottoview{
+  line-height: 1.5;
+  background-color:rgba(255,255,255, 0);
+  color: #333
+}
+.bottoview::after{ border: none; }
+
+
+.overflow, .of{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%
+}
+
+.textw{
+  font-weight: 800
+}
+
+/* 遮罩层 */
+.commodity_screen{   
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.6;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+.td_line{
+  text-decoration: line-through
+}

@@ -1,0 +1,46 @@
+<!--pages/peopleData/changeToBalance/changeToBalance.wxml-->
+<view class='top_border'></view>
+
+<view>
+
+  <view class='item30 fb bw bd s28'>
+    <view class='c6'>当前零钱</view>
+    <view class='textw c_r'>￥{{userInfo.dibs}}</view>
+  </view>
+
+
+
+  <view class='item30 bw'>
+    <view class='s28 textw mb30'>转人会员号</view>
+
+    <view class='fs mt30 bd pb20 mb30'>
+      <input bindinput='inputUserCode' maxlength='7' value='{{code}}' placeholder='请输入会员号'></input>
+    </view>
+
+    <view class='fs checkUser mb30' wx:if="{{checkUser}}">
+      <image mode='widthFix' class='mr30' src='{{checkUser.wxPic}}' style='width:88rpx'></image>
+      <!-- <view class='va'> -->
+      <view class='s28'>{{checkUser.wxName}}</view>
+        <!-- <view class='s24 c9'>{{checkUser.createrDate}}</view> -->
+      <!-- </view> -->
+    </view>
+
+    <view class='s28 textw mb30'>转入金额</view>
+
+    <view class='fs mt30 bd pb20'>
+      <view class='mr30'>￥</view>
+      <input type='digit' bindinput='inputmoney' value='{{inputMoney}}' placeholder='请输入提现金额'></input>
+    </view>
+
+    <view class='itembot'>
+      <button class='button s32 mb20' bindtap='dibsEditBalance'>立即转入</button>
+    </view>
+
+
+
+
+  </view>
+      
+</view>
+
+

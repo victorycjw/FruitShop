@@ -1,0 +1,7 @@
+<!--pages/system/dzInterest/dzInterest.wxml-->
+<view class='top'>
+  <image mode='widthFix' src='/images/index/dzqy.jpg' style='width:100%'></image>
+</view>
+<view class='botBut' bindtap='tosort'>
+  <image mode='widthFix' src='/images/index/dzbut.png' style='width:100%'></image>
+</view>

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "我的订单",
+  "usingComponents": {
+    "i-count-down": "../../../dist/count-down/index"
+  }
+}

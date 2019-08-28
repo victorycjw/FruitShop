@@ -22,7 +22,7 @@
   </swiper>
 
   <!-- 消息通知 -->
-   <view class='bw noticView'>
+  <!-- <view class='bw noticView'>
     <swiper autoplay='true' circular='true'>
       <block wx:for="{{messageList}}" wx:key='id'>
         <swiper-item class="fs">
@@ -30,7 +30,7 @@
         </swiper-item>
       </block>
     </swiper>
-  </view> 
+  </view> -->
 
   <view class='h96 bw item30 fs'>
     <image class='mr30' src='/images/index/notice.png' style='width:49rpx;height:38rpx'></image>
@@ -43,11 +43,19 @@
     </swiper>
   </view>
 
+  <!-- 分类部分 -->
+  <!-- <scroll-view class='scroll_view' scroll-x="true">
+    <block wx:for="{{CategroyAllList}}" wx:key="id">
+      <view class='scroll_view_item' bindtap='toProductSort' data-id='{{item.id}}'>
+        <image mode='aspectFill' src='{{imgURL+item.picture}}' style='width:220rpx;height:120rpx;border-radius:10rpx;'></image>
+      </view>
+    </block>
+  </scroll-view> -->
 
   <!-- VIP -->
 <view class='vip mb20'>
     <image mode='widthFix' src='/images/index/bigPacket.png' bindtap='toVIPshop' style='width:710rpx;'></image>
-    <view class='vip_combo fb mb20'>
+    <!-- <view class='vip_combo fb mb20'>
       <view class='vip_combo_a' bindtap='toProductVIPData' data-id='{{VipGiftList[0].id}}'>
         <image mode='aspectFill' src='{{imgURL+VipGiftList[0].smallPic}}' style='width:300rpx;height:370rpx;'></image>
         <image class='combo_tip' mode='widthFix' src='/images/index/Acombo.png' style='width:68rpx;height:86rpx;'></image>
@@ -63,11 +71,25 @@
         </view>
 
       </view>
-    </view>
-    <image class='mb20' mode='widthFix' src='/images/index/adv.jpg' style='width:100%;'></image>
-    <image bindtap='toRecharge' mode='widthFix' src='/images/index/chongzhi.png' style='width:100%'></image>
+    </view> -->
+    <!-- <image class='mb20' mode='widthFix' src='/images/index/adv.jpg' style='width:100%;'></image> -->
+    <!-- <image bindtap='toRecharge' mode='widthFix' src='/images/index/chongzhi.png' style='width:100%'></image> -->
   </view>
 
+  <!-- 拼团及店主权益 -->
+  <!-- <view class='mb20 bw item20'>
+    <view class='mb20'>
+      <image class='ptImg' mode='widthFix' src='/images/index/pt.jpg'></image>
+    </view>
+
+    <view class='mb20' bindtap='toDzInterest'>
+      <image mode='widthFix' src='/images/index/dz.png' style='width:100%'></image>
+    </view>
+
+    <view>
+      <image mode='widthFix' bindtap='toRecharge' src='/images/index/chongzhi.png' style='width:100%'></image>
+    </view>
+  </view> -->
 
 </view>
 

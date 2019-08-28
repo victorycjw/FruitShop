@@ -1,0 +1,31 @@
+/* pages/welfare/welfare.wxss */
+@import "/utils/style/flexstyle.wxss";
+
+.welfare {
+  position: relative;
+}
+
+.welfare_pos {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding-bottom: 30rpx;
+}
+
+.c_t {
+  color: #ff5100;
+}
+
+.welfare_pos_item {
+  position: relative;
+}
+
+.welfare_pos_item_btn {
+  width: 100%;
+  position: absolute;
+  bottom: 50rpx;
+}
+
+.mb40 {
+  margin-bottom: 40rpx;
+}

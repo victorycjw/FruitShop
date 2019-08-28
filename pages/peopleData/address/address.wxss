@@ -1,0 +1,88 @@
+/* pages/address/address.wxss */
+@import "/utils/style/flexstyle.wxss";
+
+page {
+  background: #f5f5f5;
+}
+
+.address_item {
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+
+.address_item_name {
+  padding: 34rpx 30rpx;
+  border-bottom: 1rpx solid #ededed;
+}
+
+.mb40 {
+  margin-bottom: 40rpx;
+}
+
+.address_item_btn {
+  height: 88rpx;
+  padding: 0 30rpx;
+}
+
+.address_item_btn_edit {
+  width: 160rpx;
+  height: 50rpx;
+  border-radius: 10rpx;
+  border: 1rpx solid #000;
+}
+
+.address_add {
+  width: 690rpx;
+  height: 96rpx;
+  border-radius: 10rpx;
+  background: #f23030;
+  margin-top: 60rpx;
+  color: #fff
+}
+
+/* 新增地址 */
+
+.newaddress_item {
+  height: 96rpx;
+  padding: 0 30rpx;
+  border-bottom: 1rpx solid #ededed;
+  background: #fff;
+}
+
+.newaddress_item input {
+  text-align: right;
+  /* width: 60%; */
+}
+.newaddress_item picker{
+  width: 60%;
+  text-align: right
+}
+
+.line_item {
+  height: 88rpx;
+  padding: 0 30rpx;
+  border-bottom: 1rpx solid #ededed;
+}
+
+
+.newaddress_door {
+  height: 306rpx;
+  padding: 0 30rpx 30rpx;
+  background: #fff;
+}
+
+.newaddress_door_title {
+  height: 96rpx;
+}
+
+.newaddress_door textarea {
+  width: 100%;
+  height: 180rpx;
+  box-sizing: border-box;
+  padding: 20rpx 30rpx;
+  background: #f5f5f5;
+}
+
+button::after {
+  border: none;
+}

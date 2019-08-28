@@ -1,0 +1,56 @@
+/* pages/sweepDetail/sweepDetail.wxss */
+@import "/utils/style/flexstyle.wxss";
+
+.open_top{
+  position: relative;
+}
+.open_money{
+  position: absolute;
+  top: 150rpx;
+  left: 300rpx;
+  font-size: 50rpx;
+  font-weight: 600;
+  color: #fff;
+}
+.open_top_info{
+  font-size: 26rpx;
+  color: #fff;
+  position: absolute;
+  bottom: 100rpx;
+  text-align: center;
+}
+.open_top_info>view:first-child{
+  margin-bottom: 10rpx;
+}
+/* 列表部分 */
+.open_list_item{
+  padding: 20rpx 30rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+.open_list_item_left>image{
+  border-radius: 50%;
+  margin-right: 30rpx;
+}
+.open_list_name{
+  font-size: 30rpx;
+}
+.open_list_name>view:first-child{
+  margin-bottom: 10rpx;
+}
+.open_list_item_right{
+  font-size: 30rpx;
+  text-align: right;
+}
+.open_list_money{
+  color: #13B1B7;
+  margin-top: 10rpx;
+}
+.zhuang{
+  position: relative;
+  top:-20rpx;
+  font-size: 30rpx;
+  color: #13B1B7;
+}
+.on{
+  color: #C61C20;
+}

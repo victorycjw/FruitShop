@@ -1,0 +1,37 @@
+<!--pages/peopleData/peopleInfo/peopleInfo.wxml-->
+<view class='top_border'></view>
+
+<view class='fb mb20 item'>
+  <view>头像</view>
+  <image mode='widthFix' class='top_pic' src="{{userInfo.wxPic?userInfo.wxPic:'/images/myhead.png'}}"></image>
+</view>
+
+<form bindsubmit="completeuser" bindreset='formreset'>
+  <view class="fb item bd">
+    <view class="" style='width:25%'>姓名</view>
+
+    <input placeholder="{{userInfo.name?userInfo.name:'填写姓名'}}" name="name" />
+
+  </view>
+  <view class="fb item bd">
+    <view style='width:25%'>性别</view>
+    <view class="" style='width:70%'>
+      <picker bindchange="ChangeSex" value="{{sexindex}}" range="{{sexArray}}" range-key='name' style='width:100%'>
+        <view class="picker" wx:if="{{!sexindex}}">
+            {{userInfo.sex!=3?sexArray[userInfo.sex].name:'选择性别'}}
+        </view>
+        <view class="picker" wx:if="{{sexindex}}">
+            {{sexArray[sexindex].name}}
+        </view>
+      </picker>
+    </view>
+  </view>
+  <view class="fb item bd">
+    <view class="" style='width:25%'>手机号码</view>
+
+    <input maxlength="11" type='number' placeholder="{{userInfo.phone?userInfo.phone:'填写手机号'}}" name="phone" />
+  </view>
+  <view class="bottom_btn">
+    <button class='button' form-type="submit">{{userInfo.phone?'更改':'提交'}}</button>
+  </view>
+</form>

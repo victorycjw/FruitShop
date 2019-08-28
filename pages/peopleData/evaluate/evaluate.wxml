@@ -1,0 +1,31 @@
+<!--pages/peopleData/evaluate/evaluate.wxml-->
+
+
+
+
+<form bindsubmit="postEvaluate" wx:for="{{proList}}" wx:key="id" data-index="{{index}}">
+  <view class='' style='height:100%' wx:if="{{item.fabuState==1}}">
+    <view class='top_border'></view>
+    <view class="fs item20 bw bd">
+      <image class='mr20' mode='aspectFill' src="{{imgURL+item.productPic}}" style='width:80rpx;height:80rpx'></image>
+      <view class='s26 of'>{{item.productName}}</view>
+    </view>
+
+    <view class="bw item30">
+      <textarea name="title" placeholder="说说你使用的心得，分享给更多的朋友吧!" />
+      <view class="fs imgs mb20">
+        <image wx:if="{{chooseImgs}}" wx:for="{{chooseImgs}}" src="{{item}}" bindtap="chooseImg"></image>
+        <image mode='widthFix' src="/images/my/addpic.png" bindtap="chooseImg"></image>
+      </view>
+
+      <view class=" bw fb">
+        <view class="">匿名</view>
+        <switch name="switch" color='#febd17'></switch>
+      </view>
+
+    </view>
+    
+    <button form-type="submit" class="btn s32">提交评价</button>
+
+  </view>
+</form>

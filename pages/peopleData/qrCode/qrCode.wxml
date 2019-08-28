@@ -1,0 +1,24 @@
+<!--pages/peopleData/qrCode/qrCode.wxml-->
+<view>
+  <view class='fb bw qrItem' bindtap='toMyTeam'>
+    <view class='fs'>
+      <image class='mr20' mode='widthFix' src='/images/my/qrTeam.png' style='width:32rpx'></image>
+      <view class='s30'>我的团队</view>
+    </view>
+    <image mode='widthFix' src='/images/my/right.png' style='width:14rpx'></image>
+  </view>
+</view>
+
+<button class='button s32' bindtap='createUserRQCode' wx:if="{{!userInfo.qrCode}}">生成</button>
+
+<view wx:if="{{userInfo.qrCode}}">
+  <!-- <swiper indicator-dots='true' style='height:900rpx' >
+    <block wx:for="{{qrCodeList}}" wx:key="id">
+      <swiper-item> -->
+        <image mode='widthFix' class='qrcode' src='{{imgURL+userInfo.qrCode}}'></image>
+      <!-- </swiper-item>
+    </block>
+  </swiper> -->
+
+  <button class='button s32' bindtap='QRCodeDownload'>下载</button>
+</view>

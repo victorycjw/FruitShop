@@ -1,0 +1,161 @@
+<!--index.wxml-->
+<import src="/utils/xmls/maskLayer/maskLayer.wxml" />
+<import src="/utils/xmls/noneDataStyle/noneDataStyle.wxml" />
+<view class="sweepmain verticalcenter">
+  <image mode='widthFix' src='../../images/saoleibg.jpg' style='width:100%;display:block;'></image>
+  <!-- 头像信息 -->
+  <view class="userinfo">
+    <image bindtap="{{userInfo.userId?'':'login'}}" class="userinfo-avatar" src="{{userInfo.wxPic?userInfo.wxPic:'../../images/indexAvatar.jpg'}}" background-size="cover"></image>
+    <text bindtap="{{userInfo.userId?'':'login'}}" class="userinfo-nickname">{{userInfo.wxName?userInfo.wxName:'授权登录'}}</text>
+    <!-- <view wx:if="{{userInfo.CLIENT_ID}}" class='userid'>ID: {{userInfo.CLIENT_ID}}</view> -->
+    <view class='sweep_btn allcenter'>
+      <button bindtap='showCreatBox' class='sweep_btn_item'>创建雷包</button>
+      <button bindtap='showRuleBox' class='sweep_btn_item'>游戏规则</button>
+    </view>
+  </view>
+  <!-- 我的积分 -->
+  <view class='myCoins verticalcenter'>
+    <view>我的积分</view>
+    <view class='myCoins_num'>{{userInfo.integral}}</view>
+  </view>
+  <!-- 在线人数 -->
+  <view class='onlineNum verticalcenter' bindtap='toCreateRecord'>
+    <!-- <view>在线人数</view>
+    <view class='myCoins_num'>{{online}}</view> -->
+    <view style="margin-top:15%;">创建记录</view>
+  </view>
+</view>
+
+<view class='hall'>
+  <!-- 未点开的红包 -->
+  <block wx:for="{{landMineList}}">
+    <view wx:if="{{item.upState==0&&item.userId!=userInfo.userId}}" class='hall_item flex_start'>
+      <image mode='widthFix' src='{{item.userPic}}' style='width:90rpx;height:90rpx;'></image>
+      <view class='hall_item_right'>
+        <view>{{item.userName}}</view>
+        <view bindtap='toSweepDetail' data-index='{{index}}' class='redpack flex_start '>
+          <image mode='widthFix' src='../../images/red.png' style='width:60rpx;'></image>
+          <view class='redpack_text'>
+            <view>{{item.coin}}积分 | 雷:{{item.landmineNum}}</view>
+            <view>领取红包</view>
+          </view>
+          <view class='redpack_bottom'>天赐良包</view>
+          <view class='arrow'></view>
+        </view>
+      </view>
+    </view>
+    <!-- 已经点开的红包 -->
+    <view wx:if="{{item.upState==1&&item.userId!=userInfo.userId}}" class='hall_item flex_start' bindtap='tolookDetail' data-id='{{item.id}}'>
+      <image mode='widthFix' src='{{item.userPic}}' style='width:90rpx;'></image>
+      <view class='hall_item_right'>
+        <view>{{item.userName}}</view>
+        <view class='redpack clickd_redpack flex_start '>
+          <image mode='widthFix' src='../../images/red_too.png' style='width:60rpx;'></image>
+          <view class='redpack_text'>
+            <view>{{item.coin}}积分 | 雷:{{item.landmineNum}}</view>
+            <view>领取红包</view>
+          </view>
+          <view class='redpack_bottom'>天赐良包</view>
+          <view class='arrow clickd_arrow'></view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 自己发的未点开的红包 -->
+    <view wx:if="{{item.upState==0&&item.userId==userInfo.userId}}" class='hall_item flex_end'>
+      <view class='hall_item_right hall_self'>
+        <view class='hall_self_name'>{{item.userName}}</view>
+        <view bindtap='toSweepDetail' data-index='{{index}}' class='redpack flex_start '>
+          <image mode='widthFix' src='../../images/red.png' style='width:60rpx;'></image>
+          <view class='redpack_text'>
+            <view>{{item.coin}}积分 | 雷:{{item.landmineNum}}</view>
+            <view>领取红包</view>
+          </view>
+          <view class='redpack_bottom'>天赐良包</view>
+          <view class='hall_self_arrow'></view>
+        </view>
+      </view>
+      <image mode='widthFix' src='{{item.userPic}}' style='width:90rpx;height:90rpx'></image>
+    </view>
+    <!-- 自己发的已经点开的红包 -->
+    <view wx:if="{{item.upState==1&&item.userId==userInfo.userId}}" bindtap='tolookDetail' data-id='{{item.id}}' class='hall_item flex_end'>
+      <view class='hall_item_right hall_self'>
+        <view class='hall_self_name'>{{item.userName}}</view>
+        <view data-index='{{index}}' class='redpack clickd_redpack flex_start '>
+          <image mode='widthFix' src='../../images/red_too.png' style='width:60rpx;'></image>
+          <view class='redpack_text'>
+            <view>{{item.coin}}积分 | 雷:{{item.landmineNum}}</view>
+            <view>领取红包</view>
+          </view>
+          <view class='redpack_bottom'>天赐良包</view>
+          <view class='hall_self_arrow clickd_arrow_self'></view>
+        </view>
+      </view>
+      <image mode='widthFix' src='{{item.userPic}}' style='width:90rpx;height:90rpx'></image>
+    </view>
+
+
+  </block>
+
+  <!-- 弹出框部分 -->
+  <!-- 创建雷包弹出框 -->
+  <view class='creat_popbox' wx:if="{{creatBoxStatus}}">
+    <view class='recharge_title'>扫雷</view>
+    <view class='num_item flex_between'>
+      <view bindtap='chooseMoney' class='coinsNum_item {{money==item?"moneyon":""}}' wx:for="{{coinsNum}}" data-money='{{item}}'>
+        {{item}}积分
+      </view>
+    </view>
+    <view class='recharge_title'>尾数</view>
+    <view class='num_item  flex_between'>
+      <view bindtap='chooseSsaNum' class='coinsNum_item ssaNum_item {{choosessaNum===item?"moneyon":""}}' wx:for="{{ssaNum}}" data-money='{{item}}'>
+        {{item}}
+      </view>
+    </view>
+    <button bindtap='creatpacket' class='creat_btn' type='warn'>创建雷包</button>
+  </view>
+
+
+
+
+
+  <!-- 点开红包弹出框 -->
+  <view class='open_popbox verticalcenter' wx:if="{{openBoxStatus}}">
+    <image class='closeimage' bindtap='hideModal' mode='widthFix' src='../../images/cross.png' style='width:60rpx;'></image>
+    <image class="userinfo-avatar" src="{{openmine.userPic}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{openmine.userName}}</text>
+    <view class='openbox_data'>{{openmine.coin}}积分 | 雷:{{openmine.landmineNum}}</view>
+    <view bindtap='openredpacket' class='openbox_btn' hover-class='openbox_btn_hover'>開</view>
+  </view>
+
+
+
+
+  <!-- 规则弹出框 -->
+  <view class='rule_popbox' wx:if="{{ruleBoxStatus}}">
+    <text>
+      1、玩家可加入或者创建金额在10-1000积分包。(创建房间免手续费)\n2、庄家可设置0-9的尾数，如3尾，玩家如果抢到0.03，1.23只要尾数是3尾，就判输，赔率2倍。\n3、玩家进入10积分的房间，每位玩家进入需要20积分。 (如果抢住雷-20)
+    </text>
+    <button bindtap='hideModal' class='rule_btn' type='default'>我知道了</button>
+  </view>
+
+
+  <template is="maskLayer" data="{{showModalStatus}}" />
+
+</view>
+
+
+<!-- <view class='tiaofu' wx:if="{{houseList.length>0}}">
+  <view class='tiaofu_pos' catchtouchmove='tiaofuTouch'></view>
+  <swiper class="tiaofu_swiper" autoplay="true" circular="true" interval="5000" duration='5000'>
+    <swiper-item></swiper-item>
+    <block wx:for="{{houseList}}" wx:key="id">
+      <swiper-item>
+        <view class='ac tiaofu_swiper'>{{item.message}}</view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view> -->
+
+<template is="noneDataStyle" data="{{data:landMineList}}" />
+<template is="endStyleSmall" data="{{data:isend}}" />

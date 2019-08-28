@@ -1,0 +1,105 @@
+<!--pages/peopleData/coupon/coupon.wxml-->
+
+<!-- 个人中心优惠卷 -->
+<view wx:if="{{!ordermoney}}">
+  <!-- 未领取 -->
+  <view  wx:if="{{couponType==-1}}">
+    <view class='item'> 
+      <image mode='widthFix' src='/images/my/coupon3.png'></image>
+      <view class='itemleft cw'>
+        <view class='fs'>
+          <view class='s48'>￥20</view>
+          <view class='s40'>优惠券</view>
+        </view>
+        <view class='s26'>新人专享优惠券</view>
+      </view>
+      <view class='itemright vc c_r'>
+        <view class='s40 textw'>立即</view>
+        <view class='mb10 s40 textw'>领取</view>
+        <view class='s24'>满99元可用</view>
+      </view>
+    </view>
+  </view>
+
+
+  <view  wx:if="{{couponType==1}}" wx:for="{{couponList}}" wx:key="id">
+
+    <!-- 未使用 -->
+    <view class='item' wx:if="{{item.isExpire==2&&item.isUse==2}}"> 
+      <image mode='widthFix' src='/images/my/coupon3.png'></image>
+      <view class='itemleft cw'>
+        <view class='fs'>
+          <view class='s48'>￥{{item.couponMoney}}</view>
+          <view class='s40'>优惠券</view>
+        </view>
+        <view class='s26'>{{item.endDate}}到期</view>
+      </view>
+      <view class='itemright vc c_r'>
+        <view class='s40 textw'>立即</view>
+        <view class='mb10 s40 textw'>使用</view>
+        <view class='s24'>满{{item.minMoney}}元可用</view>
+      </view>
+    </view>
+
+      <!-- 已使用 -->
+    <view class='item' wx:if="{{item.isUse==1}}"> 
+      <image mode='widthFix' src='/images/my/coupon2.png'></image>
+      <view class='itemleft cw'>
+        <view class='fs'>
+          <view class='s48'>￥{{item.couponMoney}}</view>
+          <view class='s40'>优惠券</view>
+        </view>
+        <view class='s26'>{{item.endDate}}到期</view>
+      </view>
+      <view class='itemright vc c9'>
+        <view class='s40 textw'>已使用</view>
+        <!-- <view class='mb10 s40 textw'>使用</view> -->
+        <view class='s24'>满{{item.minMoney}}元可用</view>
+      </view>
+    </view>
+
+      <!-- 已过期 -->
+    <view class='item' wx:if="{{item.isExpire==1&&item.isUse==2}}"> 
+      <image mode='widthFix' src='/images/my/coupon1.png'></image>
+      <view class='itemleft cw'>
+        <view class='fs'>
+          <view class='s48'>￥{{item.couponMoney}}</view>
+          <view class='s40'>优惠券</view>
+        </view>
+        <view class='s26'>{{item.endDate}}到期</view>
+      </view>
+      <view class='itemright vc c9'>
+        <!-- <view class='s40 textw'>立即</view> -->
+        <view class='mb10 s40 textw'>已过期</view>
+        <view class='s24'>满{{item.minMoney}}元可用</view>
+      </view>
+    </view>
+
+
+  </view>
+
+</view>
+
+<!-- 确认订单 -->
+<view wx:if="{{ordermoney}}">
+  <view  wx:if="{{couponType==1}}" wx:for="{{couponList}}" wx:key="id">
+
+    <!-- 未使用 -->
+    <view class='item' wx:if="{{item.isExpire==2&&item.isUse==2&&ordermoney>=item.minMoney}}"> 
+      <image mode='widthFix' src='/images/my/coupon3.png'></image>
+      <view class='itemleft cw'>
+        <view class='fs'>
+          <view class='s48'>￥{{item.couponMoney}}</view>
+          <view class='s40'>优惠券</view>
+        </view>
+        <view class='s26'>{{item.endDate}}到期</view>
+      </view>
+      <view class='itemright vc c_r' bindtap='getCouponId' data-item='{{item}}'>
+        <view class='s40 textw'>立即</view>
+        <view class='mb10 s40 textw'>使用</view>
+        <view class='s24'>满{{item.minMoney}}元可用</view>
+      </view>
+    </view>
+    
+  </view>
+</view>

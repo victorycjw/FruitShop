@@ -1,0 +1,50 @@
+<!--pages/peopleData/balance/balance.wxml-->
+
+<view>
+  <!-- 背景图 -->
+  <view class='top_img'>
+    <image mode='widthFix' src='/images/my/balanceTop.jpg' style='width:750rpx;'></image>
+    <view class='top_img_window vc'>
+      <view>
+        <text class='s30'>￥</text>
+        <text class='s60'>{{userInfo.balance}}</text>
+      </view>
+      <view class='s24'>我的余额</view>
+    </view>
+  </view>
+
+  <!-- 标题部分 -->
+  <view class='money_title fs'>余额明细</view>
+
+  <view class='fs warp money_icons'>
+    <view bindtap='toBalanceDetail' class='vc' data-type='0'>
+      <image mode='widthFix' src='/images/my/money_icon1.png'  style='width:48rpx'></image>
+      <view class='icon_title s24'>全部明细</view>
+    </view>
+
+    <view bindtap='toBalanceDetail' class='vc' data-type='1'>
+      <image mode='widthFix' src='/images/my/money_icon2.png'  style='width:48rpx'></image>
+      <view class='icon_title s24'>余额充值</view>
+    </view>
+
+    <view bindtap='toBalanceDetail' class='vc' data-type='6'>
+      <image mode='widthFix' src='/images/my/money_icon4.png'  style='width:48rpx'></image>
+      <view class='icon_title s24'>充值赠送</view>
+    </view>
+
+    <view bindtap='toBalanceDetail' class='vc' data-type='2'>
+      <image mode='widthFix' src='/images/my/money_icon3.png'  style='width:48rpx'></image>
+      <view class='icon_title s24'>购物消费</view>
+    </view>
+    <view bindtap='toBalanceDetail' class='vc' data-type='3'>
+      <image mode='widthFix' src='/images/my/money_icon5.png'  style='width:48rpx'></image>
+      <view class='icon_title s24'>订单退款</view>
+    </view>
+    <view bindtap='toBalanceDetail' class='vc' data-type='4'>
+      <image mode='widthFix' src='/images/my/money_icon7.png'  style='width:48rpx'></image>
+      <view class='icon_title s24'>他人转入</view>
+    </view>
+
+  </view>
+
+</view>

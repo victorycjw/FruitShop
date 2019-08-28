@@ -1,0 +1,75 @@
+/* pages/peopleData/qrCode/qrCode.wxss */
+@import "/utils/style/flexstyle.wxss";
+
+page{
+  background: #f5f5f5;
+}
+
+.qrItem{
+  margin: 20rpx 30rpx;
+  padding: 30rpx 20rpx;
+  width: 690rpx
+}
+.qr{
+  width: 690rpx;
+  height: 900rpx;
+  background: #fff;
+  margin: 0 auto;
+  border-radius: 20rpx;
+  text-align: center;
+  position: relative
+}
+.qr1img{
+  width: 366rpx;
+  position: absolute;
+  top: 40rpx;
+  left: 162rpx;
+}
+.qr1cont{
+  position: absolute;
+  top: 324rpx;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column
+}
+
+.qr3cont1{
+  color: #e1879b;
+  position: absolute;
+  top: 100rpx;
+  left: 84rpx
+}
+
+.qr3cont2{
+  position: absolute;
+  top: 194rpx;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column
+}
+.s56{
+  font-size: 56rpx;
+}
+.mt60{
+  margin-top: 60rpx
+}
+.textcolor{
+  color: #ff6c96
+}
+
+
+.button{
+  width: 690rpx;
+  background: #f23030;
+  color: #fff;
+  margin: 30rpx auto 0
+}
+
+.qrcode{
+  width: 690rpx;
+  margin: 0 auto
+}

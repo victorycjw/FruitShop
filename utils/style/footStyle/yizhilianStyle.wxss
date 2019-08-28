@@ -1,0 +1,10 @@
+.yizhilian{
+  position: relative;
+  bottom: -60rpx;
+  margin-bottom: 30rpx;
+  text-align: center;
+}
+.yizhilian image{
+  height:28rpx !important;
+  width:30% !important;
+}

@@ -1,0 +1,23 @@
+<!--pages/peopleData/balanceDetail/balanceDetail.wxml-->
+<!-- 无数据样式 -->
+<import src="/utils/xmls/noneDataStyle/noneDataStyle.wxml" />
+<!-- 顶部分界线 -->
+<view class='top_border'></view>
+
+<template is="noneDataStyle" data="{{data:balanceList}}" />
+<block wx:for="{{balanceList}}" wx:key="id"> 
+  <view class='fb item bd'>
+    <view>
+      <view class='s28' wx:if="{{item.sourceType==1}}">余额充值</view>
+      <view class='s28' wx:if="{{item.sourceType==2}}">购物消费</view>
+      <view class='s28' wx:if="{{item.sourceType==3}}">退款</view>
+      <view class='s28' wx:if="{{item.sourceType==4}}">转账增加</view>
+      <view class='s28' wx:if="{{item.sourceType==5}}">后台修改</view>
+      <view class='s28' wx:if="{{item.sourceType==6}}">充值赠送</view>
+      <view class='s24 c9'>{{item.date}}</view>
+    </view>
+
+    <view class='s30'>{{item.direction==1?"+":"-"}}￥{{item.money}}</view>
+  </view>
+</block>
+

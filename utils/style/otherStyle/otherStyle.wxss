@@ -1,0 +1,99 @@
+.gray_cut_line{ /* 灰色的分割线 */
+  height: 1px;
+  width: 100rpx;
+  background: #aaa;
+  margin: 0 auto;
+  margin-top: 45rpx;
+}
+.border_bottom_eee{
+  border-bottom: 1px solid #eee;
+}
+/* ---------↓↓↓↓↓↓字体样式↓↓↓↓↓↓--------- */
+.unline {   /* 删除线 */
+  text-decoration: line-through;
+  color: gray;
+  font-size: 20rpx;
+}
+.little_font{
+  font-size: 24rpx;
+}
+.big_font{   /* 大字体 */
+  font-size: 32rpx;
+}
+.gray_font{   /* 灰色小字体 */
+  color: #999;
+}
+.red_font{   /* 红色字体 */
+  color: red;
+}
+.green_font{   /* 绿色字体 */
+  color: green;
+}
+.bold_font{   /* 粗体 */
+  font-weight: bold;
+}
+
+/* ---------↑↑↑↑↑↑字体样式↑↑↑↑↑↑--------- */
+.text_overflow{   /* 文本溢出省略号 */
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.text_overflow_more_line{   /* 多行文本溢出省略号 */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.text_break{    /* 打破单词 */
+  word-break: break-all;
+}
+.both_align{
+  justify-content: space-between;
+}
+/* ---------滑动橙色样式--------- */
+.baby_classify_orange{
+  width: 100%;
+  height: 110rpx;
+  margin-top: 10rpx;
+  border-bottom: 1px solid orange;
+  background: white;
+  overflow: scroll;
+  /* justify-content: space-around; */
+  flex-wrap: nowrap; 
+}
+.baby_classify_orange>view:nth-child(1){
+  flex-grow: 2;
+}
+.baby_classify_orange>view{
+  padding: 35rpx 25rpx;
+  flex-grow: 1;
+  text-align: center;
+  flex-shrink: 0; 
+}
+/* ---------滑动橙色样式--------- */
+
+/* 遮罩层 */
+.commodity_screen{   
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.6;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+/* 底部模态框弹出 */
+.commodity_attr_box{   
+  width: 100%;
+  /* height: 300rpx; */
+  overflow: auto;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+}

@@ -1,0 +1,28 @@
+<view class='welfare'>
+  <image mode='widthFix' src='/images/welfare/bg.jpg' style='width:100%;'></image>
+  <view class='welfare_pos vc'>
+    <view class='welfare_pos_item mb20'>
+      <image mode='widthFix' src='/images/welfare/point.png' style='width:690rpx;'></image>
+      <view class='welfare_pos_item_btn vc'>
+        <view class='s36 c_t mb40'>小积分大用途，积分豪礼等你来换~</view>
+        <image mode='widthFix' src='/images/welfare/point_btn.png' style='width:520rpx;' bindtap='toGame'></image>
+      </view>
+
+    </view>
+    <view class='welfare_pos_item'>
+      <image mode='widthFix' src='/images/welfare/welfare.png' style='width:690rpx;'></image>
+      <view class='welfare_pos_item_btn vc'>
+        <view class='s36 c_t mb40'>每晚8:30~9:00准时开抢！~</view>
+        <image mode='widthFix' src='/images/welfare/welfare_btn.png' style='width:520rpx;' bindtap='toSubsidy'></image>
+      </view>
+    </view>
+
+
+
+
+  </view>
+
+
+
+
+</view>

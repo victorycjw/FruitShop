@@ -1,0 +1,45 @@
+<!--pages/peopleData/myEvaluation/myEvaluation.wxml-->
+
+  <!-- 无数据样式 -->
+<import src="/utils/xmls/noneDataStyle/noneDataStyle.wxml" />
+<!-- 顶部分界线 -->
+<view class='top_border'></view>
+
+<view>
+  <view class='head fb mb20'>
+    <view class='fs'>
+      <image mode='widthFix' class='mr20' src='{{user_info.avatarUrl?user_info.avatarUrl:"/images/myhead.png"}}'></image>
+      <view>{{user_info.nickName}}</view>
+    </view>
+    <view>
+      <button class='c_r s28' bindtap='ToOrder'>写评价</button>
+    </view>
+
+  </view>
+
+<template is="noneDataStyle" data="{{data:commentList}}" />
+  <block wx:for="{{commentList}}" wx:key="id">
+    <view class="eva_list mb20" >
+
+      <view class='fb mb20'>
+        <view class='fs'>
+          <image mode='widthFix' class='headImg' src='{{user_info.avatarUrl?user_info.avatarUrl:"/images/myhead.png"}}'></image>
+          <view class='s26'>{{user_info.nickName}}</view>
+        </view>
+        <view class='s22 c9'>{{item.obj.date}}</view>
+      </view>
+      <view class='c6 s24 content mb20'>{{item.obj.title}}</view>
+      <view class="evaImgs fs mb20">
+        <view class="" wx:for="{{item.list}}" wx:key="id" wx:for-item="itm" wx:for-index="imgindex" bindtap="lookImg" data-index='{{index}}'>
+          <image mode='aspectFill' src="{{imgURL+itm.commentPic}}"></image>
+        </view>
+      </view>
+      
+      <view class="fs proitem">
+        <image mode='aspectFill' src="{{imgURL+item.obj.toPic}}"></image>
+        <view class="s26 of">{{item.obj.toName}}</view>
+      </view>
+
+    </view>
+  </block>
+</view>

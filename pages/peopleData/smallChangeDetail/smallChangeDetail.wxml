@@ -1,0 +1,32 @@
+<!--pages/peopleData/smallChangeDetail/smallChangeDetail.wxml-->
+
+
+<!-- 无数据样式 -->
+<import src="/utils/xmls/noneDataStyle/noneDataStyle.wxml" />
+<!-- 顶部分界线 -->
+<view class='top_border'></view>
+<template is="noneDataStyle" data="{{data:dibsList}}" />
+
+<block wx:for="{{dibsList}}" wx:key="id"> 
+  <view class='fb item bd'>
+    <view>
+      <view class='s28' wx:if="{{item.sourceType==1}}">补贴收入</view>
+      <view class='s28' wx:if="{{item.sourceType==2}}">购物消费</view>
+      <view class='s28' wx:if="{{item.sourceType==3}}">提现支付</view>
+      <view class='s28' wx:if="{{item.sourceType==4}}">推广奖金</view>
+      <view class='s28' wx:if="{{item.sourceType==5}}">下级充值提成</view>
+      <view class='s28' wx:if="{{item.sourceType==6}}">下级消费提成</view>
+      <view class='s28' wx:if="{{item.sourceType==7}}">提现失败</view>
+      <view class='s28' wx:if="{{item.sourceType==8}}">直推奖励</view>
+      <view class='s28' wx:if="{{item.sourceType==9}}">间接推荐奖励</view>
+      <view class='s28' wx:if="{{item.sourceType==10}}">平级推荐奖励</view>
+      <view class='s28' wx:if="{{item.sourceType==11}}">普通用户购买普通产品奖励</view>
+      <view class='s28' wx:if="{{item.sourceType==12}}">订单退款返还</view>
+      <view class='s28' wx:if="{{item.sourceType==13}}">转账</view>
+      <view class='s28' wx:if="{{item.sourceType==14}}">后台修改</view>
+      <view class='s24 c9'>{{item.date}}</view>
+    </view>
+
+    <view class='s30'>{{item.direction==1?"+":"-"}}￥{{item.money}}</view>
+  </view>
+</block>

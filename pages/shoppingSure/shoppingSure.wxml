@@ -1,0 +1,187 @@
+<!--pages/shoppingSure/shoppingSure.wxml-->
+<import src="../../utils/xmls/maskLayer/maskLayer.wxml" />
+<!-- 遮罩 -->
+<template is="maskLayer" data="{{showModalStatus}}" />
+<view class='top_border'></view>
+<view style='height:91%;overflow:auto'>
+  <!-- 收货地址 -->
+  <view class='mb20'  wx:if="{{!addressData}}"  bindtap='toAddress'>
+    <view class='fb item bw'>
+      <view class='fs'>
+        <image class='mr30' mode='widthFix' src='/images/shop/shopTop.png' style='width:27rpx'></image>
+        <view class='s28'>新增收货地址</view>
+      </view>
+      <view>
+        <image mode='widthFix' src='/images/my/right.png' style='width:12rpx'></image>
+      </view>
+    </view> 
+  </view>
+
+    <!-- 选择地址后 -->
+  <view wx:if="{{addressData}}" class='mb20' catchtap='toAddress'>
+    <view class='fb item bw'>
+      <view class='fs'>
+        <image class='mr30' mode='widthFix' src='/images/shop/shopTop.png' style='width:27rpx'></image>
+        <view class='s28 c3'>
+          <view class='fs'>
+            <view class='mr30'>{{addressData.name}}</view>
+            <view>{{addressData.phone}}</view>
+          </view>
+          <view>{{addressData.address}}</view>
+        </view>
+      </view>
+      <image mode='widthFix' src='/images/my/right.png' style='width:12rpx;'></image>
+    </view> 
+  </view>
+  <image mode='widthFix' src='/images/shop/stripe.png' style='width:750rpx'></image>
+
+
+  <view class='bw'>
+    <view class='item fb bd' bindtap='addOrder'>
+      <view>支付方式</view>
+      <view class='c9 fe'>
+        <view class='mr20' wx:if="{{payStyle==1}}">微信支付</view>
+        <image mode='widthFix' src='/images/my/right.png' style='width:12rpx'></image>
+      </view>
+    </view>
+
+    <block wx:for="{{carts}}" wx:key="id">
+      <view class='item20 fb bd' wx:if="{{item.checkState}}">
+        <image class='leftimg' mode='aspectFill' src='{{imgURL+item.productPic}}'></image>
+        <view class='proRight va'>
+          <view> 
+            <view class='s26 of'>{{item.productName}}</view>
+            <view class='s22 c9 mt20'>规格：{{item.productSpecName}} {{item.colour}} {{item.model}}</view>
+          </view>
+
+          <view class='fb'>
+            <view class="c_r s30" wx:if="{{item.isSpell==1}}">拼团价￥{{item.spellPrice}}</view>
+            <view class='c_r s30' wx:if="{{item.isSpell==1}}">原价￥{{item.oldPrice}}</view>
+            <view class='c_r s30' wx:else>￥{{item.price}}</view>
+            <view class='s24'>X{{item.number}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+
+    <!-- <view class='item fb bd' bindtap='toCoupon'>
+      <view>优惠券</view>
+        
+        <view class='fe c9 '>
+          <view class='mr20' wx:if="{{couponItem}}">满{{couponItem.minMoney}}减{{couponItem.couponMoney}}</view>
+          <image mode='widthFix' src='/images/my/right.png' style='width:12rpx'></image>
+        </view>
+       
+    </view> -->
+
+    <view class='item fb bd'>
+      <view>配送方式</view>
+      <view class='c9'>快递</view>
+      <!-- <picker bindchange="bindReceiveChange"  range="{{receiveList}}" style='width:60%'>
+        <view class="fe c9">
+          <view class='mr20'>{{receiveType==1?'快递':'自提货'}}</view>
+          <image mode='widthFix' src='/images/my/right.png' style='width:12rpx'></image>
+        </view>
+      </picker> -->
+    </view>
+
+    <!-- <view class='item s26 bd c9 bf5'>温馨提示：满199包邮，低于199运费自费</view> -->
+
+    
+
+    <view class='item fs bd' hidden='{{showPay}}'>
+      <view class='mr20'>买家留言</view>
+      <input class='' auto-height='true' placeholder='添加备注' bindinput='sureInput' style='width:530rpx'></input>
+    </view>
+
+
+    <view class='item fb bd'>
+      <view>
+        <view wx:if="{{couponItem}}">
+          <text>优惠</text>
+          <text class='c_r'>{{couponItem.couponMoney}}元</text>
+        </view>
+      </view>
+      <view>
+        <text class='mr30'>共{{number}}件商品</text>
+        <text>共计：</text>
+        <text class='c_r'>￥{{couponItem.couponMoney?price-couponItem.couponMoney:price}}</text>
+      </view>
+
+    </view>
+
+
+  </view>
+</view>
+
+<!-- 底部按钮栏 -->
+<view class="final fb">
+  <view class='ml30'>
+    <span class="c_rr" style="font-weight:bold;">实付：</span>
+    <span class="c_rr">¥{{couponItem.couponMoney?price-couponItem.couponMoney:price}}</span>
+  </view>
+
+  <view class='fe buttons'>
+    <button class='bg_r s32' bindtap='addOrder' wx:if="{{item.isSpell!=1}}">立即支付</button>
+    <view class='bg_r books' bindtap='addOrder' wx:else>
+      <span class="books_r">发起拼团</span>
+      <span class="books_s">(差一人拼团成功)</span>
+    </view> 
+  
+  </view>
+
+</view>
+
+<!-- 选择支付方式 -->
+<view class='payclass' wx:if="{{showPay}}">
+  <view class='payclass_title ac s32 c3'>支付方式</view>
+  <image class='cancel' catchtap='hideModal' mode='widthFix' src='/images/cancel.png' style='width:32rpx;'></image>
+  <!-- <view class='payclass_item fb' catchtap='choosePayClass' data-types='2'>
+    <view class='fs'>
+      <image class='mr30' mode='widthFix' src='/images/my/{{payStyle==2?"checkS":"check"}}.png' style='width:32rpx;'></image>
+      <view class='s28 c3'>余额支付</view>
+    </view>
+    <view class='s28 c9'>￥{{userInfo.balance}}</view>
+  </view> -->
+  <!-- <view class='payclass_item fb mb50' catchtap='choosePayClass' data-types='3'>
+    <view class='fs'>
+      <image class='mr30' mode='widthFix' src='/images/my/{{payStyle==3?"checkS":"check"}}.png' style='width:32rpx;'></image>
+      <view class='s28 c3'>零钱支付</view>
+    </view> 
+    <view class='s28 c9'>￥{{userInfo.dibs}}</view>
+  </view> -->
+  <view class='payclass_item fb mb50' catchtap='choosePayClass' data-types='1'>
+    <view class='fs'>
+      <image class='mr30' mode='widthFix' src='/images/my/{{payStyle==1?"checkS":"check"}}.png' style='width:32rpx;'></image>
+      <view class='s28 c3'>微信支付</view>
+    </view>
+  </view>
+  <button class='payclass_btn ac s32' catchtap='hideModal'>确定</button>
+</view>
+
+
+<!-- <cover-view class='payclass' wx:if="{{showPay}}">
+  <cover-view class='payclass_title ac s32 c3'>支付方式</cover-view>
+  <image class='cancel' catchtap='hideModal' mode='widthFix' src='/images/cancel.png' style='width:32rpx;'></image>
+  <cover-view class='payclass_item fb' catchtap='choosePayClass' data-types='2'>
+    <cover-view class='fs'>
+      <image class='mr30' mode='widthFix' src='/images/my/{{payStyle==2?"checkS":"check"}}.png' style='width:32rpx;'></image>
+      <cover-view class='s28 c3'>余额支付</cover-view>
+    </cover-view>
+    <cover-view class='s28 c9'>￥{{userInfo.balance}}</cover-view>
+  </cover-view>
+  <cover-view class='payclass_item fb mb50' catchtap='choosePayClass' data-types='3'>
+    <cover-view class='fs'>
+      <image class='mr30' mode='widthFix' src='/images/my/{{payStyle==3?"checkS":"check"}}.png' style='width:32rpx;'></image>
+      <cover-view class='s28 c3'>零钱支付</cover-view>
+    </cover-view>
+    <cover-view class='s28 c9'>￥{{userInfo.dibs}}</cover-view>
+  </cover-view>
+  <cover-view class='payclass_item fb mb50' catchtap='choosePayClass' data-types='1'>
+    <cover-view class='fs'>
+      <image class='mr30' mode='widthFix' src='/images/my/{{payStyle==1?"checkS":"check"}}.png' style='width:32rpx;'></image>
+      <cover-view class='s28 c3'>微信支付</cover-view>
+    </cover-view>
+  </cover-view>
+  <button class='payclass_btn ac s32' catchtap='hideModal'>确定</button>
+</cover-view> -->

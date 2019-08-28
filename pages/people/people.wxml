@@ -1,0 +1,153 @@
+<!--pages/people/people.wxml-->
+
+<!-- 顶部样式 -->
+<view class='mytop'>
+  <image mode='widthFix' src='/images/people/peopleBG.jpg' style='width:100%'></image>
+  <!-- 头像和按钮 --> 
+  <view class='mytop_pos '>
+    <button class='bottoview mytop_pos_head vc ' hover-class='none' disabled='{{userInfo}}' bindgetuserinfo='tologin' open-type='getUserInfo' style='background: transparent;'>
+      <image class='headimg' mode='aspectFill' src="{{userInfo.wxPic?userInfo.wxPic:'/images/myhead.png'}}" style='width:150rpx;height:150rpx;border-radius:50%;'></image>
+      <view class='mytop_info s32 mb10' wx:if="{{!userInfo}}">登录/注册</view>
+      <view class='mytop_info s32 c3' wx:if="{{userInfo}}">{{userInfo.name?userInfo.name:userInfo.wxName}}</view>
+
+      <view class='usertype s24' wx:if="{{shareData&&userInfo.userType!=2}}">{{shareData.name}}</view>
+      <view class='usertype s24' wx:if="{{userInfo.userType==2}}">普通用户</view>
+     <!-- <view class='usertype s24' wx:if="{{userInfo.userType==3}}">VIP用户</view>
+      <view class='usertype s24' wx:if="{{userInfo.userType==4}}">二级用户</view>
+      <view class='usertype s24' wx:if="{{userInfo.userType==5}}">三级用户</view> -->
+
+      <view class='headCode s26' wx:if="{{userInfo.userCode}}">会员号：{{userInfo.userCode}}</view>
+    </button>
+
+    <!-- <view class='mytop_icons fa'> -->
+      <!-- <view class='mytop_icon vc' bindtap='toCollection'>
+        <image mode='widthFix' src='/images/people/top_sc.png'></image>
+        <view>收藏</view>
+      </view>
+      <view class='mytop_icon vc' bindtap='toRecharge'>
+        <image mode='widthFix' src='/images/people/top_cz.png'></image>
+        <view>充值</view>
+      </view> -->
+      <!-- <view class='mytop_icon vc' bindtap='toWithdraw'>
+        <image mode='widthFix' src='/images/people/top_tx.png'></image>
+        <view>提现</view>
+      </view> -->
+      <!-- <view class='mytop_icon vc' bindtap='toQrCode' wx:if="{{userInfo&&userType!=2}}">
+        <image mode='widthFix' src='/images/people/top_code.png'></image>
+        <view>推广二维码</view>
+      </view> -->
+    <!-- </view> -->
+
+  </view>
+</view>
+
+
+
+
+<!-- 我的订单 -->
+<view class='other_icons'>
+  <view class='fb pb30 bd' bindtap='toOrder' data-tab='0'>
+    <view>我的订单</view>
+    <view>></view>
+  </view>
+
+  <view class=' fa mt30'>
+    <view class='mytorder_icons vc' bindtap='toOrder' data-tab='1'>
+      <view class='mytorder_icon'>
+        <image mode='widthFix' src='/images/people/order_fk.png'></image>
+        <view class='num ac' wx:if="{{orderNumber.count1&&orderNumber.count1!=0}}">{{orderNumber.count1}}</view>
+      </view> 
+
+      <view>待付款</view>
+
+    </view>
+    <view class='mytorder_icons vc' bindtap='toOrder' data-tab='2'>
+      <view class='mytorder_icon'>
+        <image mode='widthFix' src='/images/people/order_pj.png'></image>
+        <view class='num ac' wx:if="{{orderNumber.count4&&orderNumber.count4!=0}}">{{orderNumber.count4}}</view>
+      </view>
+      <view>待分享</view>
+    </view>
+    <view class='mytorder_icons vc' bindtap='toOrder' data-tab='3'>
+      <view class='mytorder_icon'>
+        <image mode='widthFix' src='/images/people/order_fh.png'></image>
+        <view class='num ac' wx:if="{{orderNumber.count2&&orderNumber.count2!=0}}">{{orderNumber.count2}}</view>
+      </view>
+      <view>待发货</view>
+    </view>
+    <view class='mytorder_icons vc' bindtap='toOrder' data-tab='4'>
+      <view class='mytorder_icon'>
+        <image mode='widthFix' src='/images/people/order_sh.png'></image>
+        <view class='num ac' wx:if="{{orderNumber.count3&&orderNumber.count3!=0}}">{{orderNumber.count3}}</view>
+      </view>
+      <view>待收货</view>
+    </view>
+    
+  </view>
+</view>
+
+<!-- 我的钱包 -->
+<!-- <view class='other_icons'>
+  <view class='fb pb30 bd'>
+    <view>我的钱包</view> -->
+    <!-- <view>></view> -->
+  <!-- </view> -->
+
+  <!-- <view class=' fs mt30'>
+    <view class='mytop_icon vc' bindtap='toBalance'>
+      <image mode='widthFix' src='/images/people/wallet_ye.png'></image>
+      <view>余额</view>
+    </view> -->
+    <!-- <view class='mytop_icon vc' bindtap='toSmallChange'>
+      <image mode='widthFix' src='/images/people/wallet_lq.png'></image>
+      <view>零钱</view>
+    </view> -->
+    <!-- <view class='mytop_icon vc' bindtap='toIntegral'>
+      <image mode='widthFix' src='/images/people/wallet_jf.png'></image>
+      <view>积分</view>
+    </view> -->
+    <!-- <view class='mytop_icon vc' bindtap='toCoupon'>
+      <image mode='widthFix' src='/images/people/wallet_bt.png'></image>
+      <view>优惠券</view>
+    </view> -->
+  <!-- </view>
+</view> -->
+
+<!-- 我的工具 -->
+<view class='other_icons'>
+  <view class='fb pb30 bd'>
+    <view>我的工具</view>
+    <!-- <view>></view> -->
+  </view>
+
+  <view class=' fs mt30 warp'>
+    <view class='mytool_icon vc' bindtap='toPeopleInfo'>
+      <image mode='widthFix' src='/images/people/tool_xx.png'></image>
+      <view>个人信息</view>
+    </view>
+    <view class='mytool_icon vc' bindtap='toAddress'>
+      <image mode='widthFix' src='/images/people/tool_dz.png'></image>
+      <view>收货地址</view>
+    </view>
+    <view class='mytool_icon vc' bindtap='toMyEvaluation'>
+      <image mode='widthFix' src='/images/people/tool_pj.png'></image>
+      <view>我的评价</view>
+    </view>
+    <!-- <view class='mytool_icon vc '>
+      <image mode='widthFix' src='/images/people/tool_kf.png'></image>
+      <view>联系客服</view>
+    </view> -->
+
+    <button class='bottoview mytool_icon vc s26 mb30' open-type='contact' style='background: transparent;padding:0'>
+      <image mode='widthFix' src='/images/people/tool_kf.png'></image>
+      <view>联系客服</view>
+    </button> 
+
+    <!-- <view class='mytool_icon vc' bindtap='toGroupProduct'>
+      <image mode='widthFix' src='/images/people/tool_pt.png'></image>
+      <view>我的拼团</view>
+    </view> -->
+  </view>
+</view>
+
+<button class='signout_but' bindtap='quitLogin' wx:if="{{userInfo}}">退出登录</button>

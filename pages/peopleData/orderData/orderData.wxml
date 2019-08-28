@@ -1,0 +1,150 @@
+<!--pages/peopleData/oderData/orderData.wxml-->
+<wxs module="toFix" src="../../../utils/util.wxs"></wxs>
+<view style="height:calc(100% + 160rpx)">
+  <view class='topItem'>
+    <image class='' mode='widthFix' src='/images/shop/orderSure.jpg' style='width:100%'></image>
+    <view class='fb topItemCon' wx:if="{{orderData.state==2}}">
+      <view class='cw s32'>等待卖家发货</view>
+      <image mode='widthFix' src='/images/shop/dfh.png'></image>
+    </view>
+
+    <view class='fb topItemCon' wx:if="{{orderData.state==1}}">
+      <view class='cw s32'>等待买家付款</view>
+      <image mode='widthFix' src='/images/shop/dfk.png'></image>
+    </view>
+
+    <view class='fb topItemCon' wx:if="{{orderData.state==3}}">
+      <view class='cw s32'>等待买家收货</view>
+      <image mode='widthFix' src='/images/shop/dsh.png'></image>
+    </view>
+
+    <view class='fb topItemCon' wx:if="{{orderData.state==4}}">
+      <view class='cw s32'>订单完成</view>
+      <image mode='widthFix' src='/images/shop/dpj.png'></image>
+    </view>
+
+    <view class='fb topItemCon' wx:if="{{orderData.state==6}}">
+      <view class='cw s32'>
+        <view> 拼单还未成功</view>
+        <view style="font-size:28rpx">让小伙伴们都来拼单吧~</view>
+      </view>
+      <image mode='widthFix' src='/images/shop/dpj.png'></image>
+    </view>
+  </view>
+
+  <view class='fs item30 bw mb20'>
+    <image class='mr20' mode='widthFix' src='/images/shop/shopTop.png' style='width:27rpx'></image>
+    <view class="shouhuo">
+      <view class='fb'>
+        <view>收货人：{{orderData.receiver}}</view>
+        <view>{{orderData.phone}}</view>
+      </view>
+      <view>{{orderData.address}}</view>
+    </view>
+  </view>
+
+
+  <view class='item30 bw c9 orderData fenxiang' wx:if="{{orderData.pro_list[0].isSpell == 1}}" style="height:272rpx;">
+    <view class="yaoqing" wx:if="{{orderData.state==1 || orderData.state==6}}">
+      <view class="fenxiangzuo">
+        <image src="/images/mine/pintuan1.png"></image>
+        <view class="content">
+          <view class="fenxiangtop">
+            待分享
+          </view>
+          <view class="fenxiangbottom">
+            <text class="fenxiangzuopin">拼主</text>
+            <image src="{{userPic}}"></image>
+            <image src="/images/mine/xuxianyuan.png" style="margin-left:10rpx;"></image>
+            <view>?</view>
+          </view>
+        </view>
+      </view>
+      <view class="fenxiangbottomtext" bindtap="yaoqing">
+        <!-- <view  bindtap="yaoqing" open-type="share">邀请好友</view> -->
+        <button open-type="share" style="border-radius:39rpx;width:100%;height:37%;background:#f1312f;color:#fff;font-size:30rpx;line-height:56rpx;">邀请好友</button>
+      </view>
+    </view> 
+    <view class="success" wx:if="{{orderData.state == 2 || orderData.state ==3 || orderData.state ==4}}">
+      <view class="fenxiangleft" style="width:30%">
+        <image src="/images/mine/pintuan.png"></image>
+        <view>拼单成功！</view>
+      </view>
+      <swiper indicator-dots="{{indicatorDots}}" autoplay='{{autoplay}}' interval='{{interval}}' duration="{{duration}}"  display-multiple-items="{{pcPic.length}}" style="padding-top:10rpx;width:184rpx;">
+        <view class="lefttitle" style="z-index:10">拼主</view>
+        <block wx:for="{{pcPic}}" wx:key="{{index}}" style="width:90rpx;">
+          <swiper-item style="height:50%;">
+            <image src="{{item}}" class="peopleImg"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+      <!-- <view class="left2" style="width:60%;overflow:hidden;" >
+        <view class="lefttitle">拼主</view>
+        <view class="leftimg">
+          <view> -->
+            <!-- <image src="/images/mine/pulse.png" class="img1"></image>   -->
+            <!-- <block wx:for="{{pcPic}}" wx:key="{{index}}">
+              <image src="{{item}}" style="width:90rpx;height:90rpx;border-radius:50%;"></image>
+            </block> -->
+            <!-- <image src="{{pcPic[1]}}"></image> -->
+          <!-- </view>
+        </view>
+      </view> -->
+    </view>
+
+  </view>
+
+  <view class='mb20' style="margin-top:22rpx;">
+    <block wx:for="{{orderData.pro_list}}" wx:key="id">
+      <view class="pros bd fb bw" style="margin-top:20rpx;">
+        <image mode='aspectFill' class='mr30' src="{{imgURL+item.productPic}}" style=''></image>
+        <view class='va prosRight'>
+          <view class="">
+            <view class="s26 of">{{item.productName}}</view>
+            <view class="c9 s22">规格：{{item.productSpecName}} {{item.colour}} {{item.model}}</view>
+          </view>
+          <view class="fb">
+            <view class="red_font big_font_30" style='color:#f1312f' wx:if="{{item.isSpell == 0}}">￥{{toFix.NoFormat(item.price)}}</view>
+            <view class="red_font big_font_30" style='color:#f1312f' wx:if="{{item.isSpell == 1}}">￥{{toFix.NoFormat(item.spellPrice)}}</view>
+            <view class="red_font big_font_30" wx:if="{{orderData.payStyle==4}}">{{item.price.toFixed(2)}}积分</view>
+            <view class="">×{{item.number}}</view>
+          </view>
+        </view>
+      </view>
+      <view class="total">
+        <text>共计：</text>
+        <text wx:if="{{item.isSpell == 0}}">￥{{item.price*item.number}}</text>
+        <text wx:if="{{item.isSpell == 1}}">￥{{item.spellPrice*item.number}}</text>
+      </view>
+    </block>
+  </view>
+
+  <view class='item30 bw c9 orderData'>
+    <view>订单编号：{{orderData.code}}</view>
+    <view>
+      <text>支付方式：</text>
+      <text wx:if="{{orderData.payStyle==1}}">微信支付</text>
+      <text wx:if="{{orderData.payStyle==2}}">余额支付</text>
+      <text wx:if="{{orderData.payStyle==3}}">零钱支付</text>
+      <text wx:if="{{orderData.payStyle==4}}">积分兑换</text>
+    </view>
+    <view>下单时间：{{orderData.date}}</view>
+  </view>
+  <view class="bottomicon" wx:if="{{}}">
+    <image src="/images/mine/gongsi.png"></image>
+    <view>中原聚信技术支持</view>
+  </view>
+  <view class="bottom">
+
+    <view class="bottombtn1">
+      <view wx:if="{{orderData.state==3}}" catchtap="updateOrderStateRecipient">确认收货</view>
+      <view wx:if="{{orderData.state==1 || orderData.state==3 || orderData.state==2}}" bindtap="callMe">联系卖家</view>
+      <!-- <view wx:if="{{orderData.state == 2 || orderData.state == 6 || orderData.state == 1}}" catchtap="cancelOrder">取消订单</view> -->
+      <!-- <view  wx:if="{{orderData.state==6}}" class="bombot"  bindtap="yaoqing">邀请好友拼单</view> -->
+      <!-- <button  wx:if="{{orderData.state==6}}" class="bombot"  style="border-radius:39rpx;height:52%;width:34%;background:#f1312f;color:#fff;font-size:30rpx;line-height:66rpx;margin-left:0rpx;margin-right:20rpx;"  open-type="share">邀请好友拼单</button> -->
+      <!-- <view wx:if="{{orderData.state==4}}">去评价</view> -->
+      <!-- <view wx:if="{{orderData.state==1}}" class="bombot"  bindtap="yaoqing" open-type="share">发起拼团</view> -->
+      <button wx:if="{{orderData.pro_list[0].isSpell==1 && orderData.state == 6}}" class="bombot" open-type="share" style="border-radius:39rpx;height:52%;width:27%;background:#f1312f;color:#fff;font-size:30rpx;line-height:62rpx;margin-left:0rpx;margin-right:20rpx;">发起拼团</button>
+    </view>
+  </view>
+</view>

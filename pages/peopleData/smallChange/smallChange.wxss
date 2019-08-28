@@ -1,0 +1,10 @@
+/* pages/peopleData/smallChange/smallChange.wxss */
+@import "../balance/balance.wxss";
+
+.toBalance{
+  height: 80rpx;
+  border-radius: 40rpx;
+  padding: 0 60rpx;
+  background: #fff;
+  color: #ff0000;
+}
