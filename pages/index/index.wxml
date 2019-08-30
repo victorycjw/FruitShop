@@ -22,7 +22,7 @@
   </swiper>
 
   <!-- 消息通知 -->
-  <!-- <view class='bw noticView'>
+  <view class='bw noticView'>
     <swiper autoplay='true' circular='true'>
       <block wx:for="{{messageList}}" wx:key='id'>
         <swiper-item class="fs">
@@ -30,7 +30,7 @@
         </swiper-item>
       </block>
     </swiper>
-  </view> -->
+  </view>
 
   <view class='h96 bw item30 fs'>
     <image class='mr30' src='/images/index/notice.png' style='width:49rpx;height:38rpx'></image>

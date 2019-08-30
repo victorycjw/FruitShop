@@ -53,13 +53,13 @@ App({
   },
 
   globalData: {
-    SYS_CODE: 'stattykate',
+    SYS_CODE: 'Private-FruitShop',
     SYS_NAME: '私人水果店',
 
     API_URL: 'https://zygx360.com/xzdxw',
     //API_URL: 'http://192.168.0.160:8080/xzdxw',
     imgURL: 'http://zygx360.com:8081',
-    APP_ID: 'wx9f8ddf1184c6811b',
+    APP_ID: 'wx714dbffba0b3a0c6',
     APP_SECRET: '9a0c8ef4f17f3f0683bc7855b74b241c',
     mchId: '1503498281',
     mchKey: '1cb9a0515114411ca841fd441dc0b1f0',
