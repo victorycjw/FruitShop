@@ -37,8 +37,8 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "私人水果店",
+    "navigationBarBackgroundColor": "#FF6699",
+    "navigationBarTitleText": "水果店",
     "navigationBarTextStyle": "black"
   },
   "subPackages": [

@@ -24,7 +24,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.2.5",
 	"appid": "wx714dbffba0b3a0c6",
-	"projectname": "Private-FruitShop",
+	"projectname": "FruitShop",
 	"isGameTourist": false,
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
@@ -50,7 +50,7 @@
 			"list": [
 				{
 					"id": -1,
-					"name": "个人中",
+					"name": "个人中心",
 					"pathName": "pages/people/people",
 					"query": ""
 				},
